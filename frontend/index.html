@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Search - INFO 624</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-icon">🔍</span>
+                    Agentic Search
+                </h1>
+                <p class="subtitle">INFO 624: Intelligent Search and Language Models</p>
+            </div>
+            <div class="header-actions">
+                <button id="settingsBtn" class="btn btn-secondary">
+                    <span>⚙️</span> Settings
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Chat Container -->
+            <div class="chat-container">
+                <div id="chatMessages" class="chat-messages">
+                    <!-- Welcome Message -->
+                    <div class="message assistant-message">
+                        <div class="message-avatar">🤖</div>
+                        <div class="message-content">
+                            <p>Welcome to <strong>Agentic Search</strong>! I'm an intelligent search agent that can:</p>
+                            <ul>
+                                <li>🔍 Search the web, documents, and academic papers</li>
+                                <li>🧠 Decompose complex queries into sub-questions</li>
+                                <li>📚 Synthesize answers with proper citations</li>
+                                <li>✨ Self-reflect to improve answer quality</li>
+                            </ul>
+                            <p>Try asking me something like:</p>
+                            <div class="example-queries">
+                                <button class="example-query" onclick="setQuery('What is RAG in AI?')">What is RAG in AI?</button>
+                                <button class="example-query" onclick="setQuery('Compare BM25 and dense retrieval for question answering')">Compare BM25 and dense retrieval</button>
+                                <button class="example-query" onclick="setQuery('How does BERT improve search ranking compared to TF-IDF?')">BERT vs TF-IDF for search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input Area -->
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <textarea 
+                            id="queryInput" 
+                            placeholder="Ask me anything..." 
+                            rows="1"
+                            onkeydown="handleKeyDown(event)"
+                        ></textarea>
+                        <button id="sendBtn" class="btn btn-primary" onclick="sendQuery()">
+                            <span>Send</span>
+                            <span class="send-icon">→</span>
+                        </button>
+                    </div>
+                    <p class="input-hint">Press Enter to send, Shift+Enter for new line</p>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Status Panel -->
+                <div class="panel status-panel">
+                    <h3 class="panel-title">System Status</h3>
+                    <div id="statusContent" class="status-content">
+                        <div class="status-item">
+                            <span class="status-dot loading"></span>
+                            <span>Checking services...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Panel -->
+                <div class="panel stats-panel">
+                    <h3 class="panel-title">Search Stats</h3>
+                    <div id="statsContent" class="stats-content">
+                        <div class="stat-item">
+                            <span class="stat-label">Documents Indexed</span>
+                            <span id="docCount" class="stat-value">-</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Queries Today</span>
+                            <span id="queryCount" class="stat-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Info Panel -->
+                <div class="panel info-panel">
+                    <h3 class="panel-title">Course Concepts</h3>
+                    <div class="info-content">
+                        <div class="concept-tag">Vector Space Models</div>
+                        <div class="concept-tag">Neural Embeddings</div>
+                        <div class="concept-tag">BM25</div>
+                        <div class="concept-tag">RAG</div>
+                        <div class="concept-tag">Self-Reflection</div>
+                        <div class="concept-tag">Query Decomposition</div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Settings Modal -->
+        <div id="settingsModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Settings</h2>
+                    <button class="close-btn" onclick="closeSettings()">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-group">
+                        <label>Include Sources</label>
+                        <input type="checkbox" id="includeSources" checked>
+                    </div>
+                    <div class="setting-group">
+                        <label>Max Results per Source</label>
+                        <input type="number" id="maxResults" value="5" min="1" max="20">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" onclick="closeSettings()">Cancel</button>
+                    <button class="btn btn-primary" onclick="saveSettings()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

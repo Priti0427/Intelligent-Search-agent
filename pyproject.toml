@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agentic-search"
+version = "0.1.0"
+description = "Agentic Search with LangGraph - INFO 624 Project"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Priti", email = "priti@example.com"}
+]
+keywords = ["langchain", "langgraph", "rag", "search", "ai", "information-retrieval"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "langchain>=0.3.0",
+    "langgraph>=0.2.0",
+    "langchain-openai>=0.2.0",
+    "langchain-community>=0.3.0",
+    "chromadb>=0.5.0",
+    "tavily-python>=0.5.0",
+    "arxiv>=2.1.0",
+    "sentence-transformers>=3.0.0",
+    "fastapi>=0.115.0",
+    "uvicorn>=0.32.0",
+    "pydantic>=2.9.0",
+    "pypdf>=5.0.0",
+    "python-docx>=1.1.0",
+    "python-dotenv>=1.0.0",
+    "httpx>=0.27.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "jupyter>=1.0.0",
+    "black>=24.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+agentic-search = "src.api.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310", "py311", "py312"]
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
