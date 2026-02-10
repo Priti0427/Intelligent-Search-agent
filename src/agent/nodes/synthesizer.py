@@ -9,10 +9,8 @@ import json
 import logging
 from typing import Any, List
 
-from langchain_openai import ChatOpenAI
-
 from src.agent.state import Citation, RetrievalResult, SearchState
-from src.utils.config import get_settings
+from src.utils.llm import get_llm
 from src.utils.prompts import get_prompt
 
 logger = logging.getLogger(__name__)
@@ -72,7 +70,6 @@ async def synthesize_answer_node(state: SearchState) -> dict[str, Any]:
     Returns:
         Updated state with draft_answer and citations
     """
-    settings = get_settings()
     query = state["original_query"]
     all_results = state.get("all_results", [])
     
@@ -89,12 +86,8 @@ async def synthesize_answer_node(state: SearchState) -> dict[str, Any]:
         }
     
     try:
-        # Initialize LLM
-        llm = ChatOpenAI(
-            model=settings.openai_model,
-            api_key=settings.openai_api_key,
-            temperature=0.3,
-        )
+        # Initialize LLM (uses Groq or OpenAI based on config)
+        llm = get_llm(temperature=0.3)
         
         # Format context from results
         context = format_context(all_results)

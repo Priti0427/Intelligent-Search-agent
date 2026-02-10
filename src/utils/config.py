@@ -1,10 +1,11 @@
 """
 Configuration management for Agentic Search.
+Supports both Groq (free) and OpenAI as LLM providers.
 """
 
 import os
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Literal
 
 from dotenv import load_dotenv
 from pydantic import Field
@@ -17,11 +18,30 @@ load_dotenv()
 class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
 
-    # OpenAI Configuration
+    # LLM Provider Selection
+    llm_provider: Literal["groq", "openai"] = Field(
+        default="groq", description="LLM provider to use (groq or openai)"
+    )
+
+    # Groq Configuration (FREE!)
+    groq_api_key: str = Field(default="", description="Groq API key")
+    groq_model: str = Field(
+        default="llama-3.1-8b-instant", description="Groq model to use"
+    )
+
+    # OpenAI Configuration (paid, optional)
     openai_api_key: str = Field(default="", description="OpenAI API key")
     openai_model: str = Field(default="gpt-4o", description="OpenAI model to use")
     openai_embedding_model: str = Field(
         default="text-embedding-3-small", description="OpenAI embedding model"
+    )
+
+    # Embedding Configuration
+    embedding_provider: Literal["huggingface", "openai"] = Field(
+        default="huggingface", description="Embedding provider (huggingface is free)"
+    )
+    huggingface_embedding_model: str = Field(
+        default="all-MiniLM-L6-v2", description="HuggingFace embedding model (free, local)"
     )
 
     # Tavily Configuration
@@ -52,9 +72,22 @@ class Settings(BaseSettings):
     def validate_api_keys(self) -> dict[str, bool]:
         """Validate that required API keys are set."""
         return {
+            "groq": bool(self.groq_api_key),
             "openai": bool(self.openai_api_key),
             "tavily": bool(self.tavily_api_key),
         }
+
+    def get_llm_api_key(self) -> str:
+        """Get the API key for the selected LLM provider."""
+        if self.llm_provider == "groq":
+            return self.groq_api_key
+        return self.openai_api_key
+
+    def get_llm_model(self) -> str:
+        """Get the model name for the selected LLM provider."""
+        if self.llm_provider == "groq":
+            return self.groq_model
+        return self.openai_model
 
     @property
     def chroma_path(self) -> Path:

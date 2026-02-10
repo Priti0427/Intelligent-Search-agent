@@ -3,6 +3,7 @@ ChromaDB Vector Store Retriever.
 
 This module provides vector-based semantic search using ChromaDB.
 It supports document ingestion, embedding generation, and similarity search.
+Supports both HuggingFace (free, local) and OpenAI (paid) embeddings.
 """
 
 import logging
@@ -11,12 +12,39 @@ from typing import List, Optional
 
 import chromadb
 from chromadb.config import Settings as ChromaSettings
-from langchain_openai import OpenAIEmbeddings
 
 from src.agent.state import RetrievalResult
 from src.utils.config import get_settings
 
 logger = logging.getLogger(__name__)
+
+
+def get_embeddings():
+    """
+    Get the configured embeddings model.
+    
+    Returns HuggingFace embeddings (free, local) or OpenAI embeddings (paid)
+    based on the EMBEDDING_PROVIDER setting.
+    """
+    settings = get_settings()
+    
+    if settings.embedding_provider == "huggingface":
+        from langchain_huggingface import HuggingFaceEmbeddings
+        
+        logger.info(f"Using HuggingFace embeddings: {settings.huggingface_embedding_model}")
+        return HuggingFaceEmbeddings(
+            model_name=settings.huggingface_embedding_model,
+            model_kwargs={"device": "cpu"},  # Use CPU for compatibility
+            encode_kwargs={"normalize_embeddings": True},
+        )
+    else:
+        from langchain_openai import OpenAIEmbeddings
+        
+        logger.info(f"Using OpenAI embeddings: {settings.openai_embedding_model}")
+        return OpenAIEmbeddings(
+            model=settings.openai_embedding_model,
+            api_key=settings.openai_api_key,
+        )
 
 
 class VectorStoreRetriever:
@@ -25,7 +53,7 @@ class VectorStoreRetriever:
     
     Features:
     - Persistent storage
-    - OpenAI embeddings
+    - HuggingFace or OpenAI embeddings (configurable)
     - Cosine similarity search
     - Metadata filtering
     """
@@ -54,14 +82,10 @@ class VectorStoreRetriever:
         self._embeddings = None
     
     @property
-    def embeddings(self) -> OpenAIEmbeddings:
+    def embeddings(self):
         """Lazy initialization of embeddings model."""
         if self._embeddings is None:
-            settings = get_settings()
-            self._embeddings = OpenAIEmbeddings(
-                model=settings.openai_embedding_model,
-                api_key=settings.openai_api_key,
-            )
+            self._embeddings = get_embeddings()
         return self._embeddings
     
     @property

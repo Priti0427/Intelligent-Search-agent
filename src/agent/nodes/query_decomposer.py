@@ -10,10 +10,8 @@ import json
 import logging
 from typing import Any
 
-from langchain_openai import ChatOpenAI
-
 from src.agent.state import SearchState, SubQuery
-from src.utils.config import get_settings
+from src.utils.llm import get_llm
 from src.utils.prompts import get_prompt
 
 logger = logging.getLogger(__name__)
@@ -35,7 +33,6 @@ async def decompose_query_node(state: SearchState) -> dict[str, Any]:
     Returns:
         Updated state with sub_queries list
     """
-    settings = get_settings()
     query = state["original_query"]
     query_type = state.get("query_type", "simple")
     feedback = state.get("reflection_feedback", "")
@@ -55,12 +52,8 @@ async def decompose_query_node(state: SearchState) -> dict[str, Any]:
         }
     
     try:
-        # Initialize LLM
-        llm = ChatOpenAI(
-            model=settings.openai_model,
-            api_key=settings.openai_api_key,
-            temperature=0.3,  # Slight creativity for decomposition
-        )
+        # Initialize LLM (uses Groq or OpenAI based on config)
+        llm = get_llm(temperature=0.3)  # Slight creativity for decomposition
         
         # Get decomposition prompt
         prompt = get_prompt(

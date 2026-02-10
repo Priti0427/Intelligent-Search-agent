@@ -10,10 +10,8 @@ import json
 import logging
 from typing import Any
 
-from langchain_openai import ChatOpenAI
-
 from src.agent.state import SearchState
-from src.utils.config import get_settings
+from src.utils.llm import get_llm
 from src.utils.prompts import get_prompt
 
 logger = logging.getLogger(__name__)
@@ -34,18 +32,13 @@ async def analyze_query_node(state: SearchState) -> dict[str, Any]:
     Returns:
         Updated state fields for query analysis
     """
-    settings = get_settings()
     query = state["original_query"]
     
     logger.info(f"Analyzing query: {query[:100]}...")
     
     try:
-        # Initialize LLM
-        llm = ChatOpenAI(
-            model=settings.openai_model,
-            api_key=settings.openai_api_key,
-            temperature=0,
-        )
+        # Initialize LLM (uses Groq or OpenAI based on config)
+        llm = get_llm(temperature=0)
         
         # Get analysis prompt
         prompt = get_prompt("query_analyzer", query=query)

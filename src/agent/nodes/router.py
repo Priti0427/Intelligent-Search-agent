@@ -9,10 +9,9 @@ import json
 import logging
 from typing import Any
 
-from langchain_openai import ChatOpenAI
-
 from src.agent.state import SearchState, SubQuery
 from src.utils.config import get_settings
+from src.utils.llm import get_llm
 from src.utils.prompts import get_prompt
 
 logger = logging.getLogger(__name__)
@@ -51,12 +50,8 @@ async def route_queries_node(state: SearchState) -> dict[str, Any]:
     logger.info(f"Routing {len(sub_queries)} sub-queries")
     
     try:
-        # Initialize LLM for intelligent routing
-        llm = ChatOpenAI(
-            model=settings.openai_model,
-            api_key=settings.openai_api_key,
-            temperature=0,
-        )
+        # Initialize LLM for intelligent routing (uses Groq or OpenAI based on config)
+        llm = get_llm(temperature=0)
         
         # Format sub-queries for prompt
         sq_text = "\n".join([

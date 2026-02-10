@@ -27,6 +27,7 @@ from src.api.schemas import (
 from src.ingestion import DocumentEmbedder
 from src.retrievers import get_vector_retriever
 from src.utils.config import get_settings
+from src.utils.llm import get_llm_info
 
 logger = logging.getLogger(__name__)
 
@@ -39,7 +40,7 @@ async def health_check():
     Check the health of all services.
     
     Returns status of:
-    - OpenAI API connection
+    - LLM API connection (Groq or OpenAI)
     - Tavily API connection
     - ChromaDB vector store
     """
@@ -47,14 +48,19 @@ async def health_check():
     services = []
     overall_status = "healthy"
     
-    # Check OpenAI
-    if settings.openai_api_key:
-        services.append(ServiceStatus(name="openai", status="ok"))
+    # Check LLM (Groq or OpenAI)
+    llm_info = get_llm_info()
+    if llm_info["has_api_key"]:
+        services.append(ServiceStatus(
+            name=f"llm ({llm_info['provider']})",
+            status="ok",
+            message=f"Using {llm_info['model']}",
+        ))
     else:
         services.append(ServiceStatus(
-            name="openai",
+            name=f"llm ({llm_info['provider']})",
             status="not_configured",
-            message="OPENAI_API_KEY not set",
+            message=f"{llm_info['provider'].upper()}_API_KEY not set",
         ))
         overall_status = "degraded"
     
@@ -68,6 +74,13 @@ async def health_check():
             message="TAVILY_API_KEY not set",
         ))
         overall_status = "degraded"
+    
+    # Check Embeddings
+    services.append(ServiceStatus(
+        name=f"embeddings ({settings.embedding_provider})",
+        status="ok",
+        message=f"Using {settings.huggingface_embedding_model if settings.embedding_provider == 'huggingface' else settings.openai_embedding_model}",
+    ))
     
     # Check ChromaDB
     try:
@@ -282,10 +295,17 @@ async def ingest_documents(request: IngestRequest):
 @router.get("/stats", tags=["System"])
 async def get_stats():
     """Get statistics about the system."""
+    settings = get_settings()
+    llm_info = get_llm_info()
+    
     try:
         vector_store = get_vector_retriever()
         return {
             "document_count": vector_store.get_document_count(),
+            "llm_provider": llm_info["provider"],
+            "llm_model": llm_info["model"],
+            "embedding_provider": settings.embedding_provider,
+            "embedding_model": settings.huggingface_embedding_model if settings.embedding_provider == "huggingface" else settings.openai_embedding_model,
             "status": "ok",
         }
     except Exception as e:

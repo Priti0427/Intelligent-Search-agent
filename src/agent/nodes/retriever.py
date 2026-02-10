@@ -10,7 +10,6 @@ import logging
 from typing import Any, List
 
 from src.agent.state import RetrievalResult, SearchState
-from src.retrievers import get_arxiv_retriever, get_tavily_retriever, get_vector_retriever
 
 logger = logging.getLogger(__name__)
 
@@ -18,6 +17,8 @@ logger = logging.getLogger(__name__)
 async def retrieve_from_web(query: str) -> List[RetrievalResult]:
     """Retrieve results from web search."""
     try:
+        # Lazy import to avoid circular dependency
+        from src.retrievers.web_search import get_tavily_retriever
         retriever = get_tavily_retriever()
         results = await retriever.search(query)
         return results
@@ -29,6 +30,8 @@ async def retrieve_from_web(query: str) -> List[RetrievalResult]:
 async def retrieve_from_vectors(query: str) -> List[RetrievalResult]:
     """Retrieve results from vector store."""
     try:
+        # Lazy import to avoid circular dependency
+        from src.retrievers.vector_store import get_vector_retriever
         retriever = get_vector_retriever()
         results = await retriever.search(query)
         return results
@@ -40,6 +43,8 @@ async def retrieve_from_vectors(query: str) -> List[RetrievalResult]:
 async def retrieve_from_arxiv(query: str) -> List[RetrievalResult]:
     """Retrieve results from arXiv."""
     try:
+        # Lazy import to avoid circular dependency
+        from src.retrievers.arxiv_search import get_arxiv_retriever
         retriever = get_arxiv_retriever()
         results = await retriever.search(query)
         return results
@@ -156,8 +161,8 @@ async def retrieve_parallel_node(state: SearchState) -> dict[str, Any]:
         r["source_type"] = "academic"
         all_results.append(r)
     
-    # Sort by score if available
-    all_results.sort(key=lambda x: x.get("score", 0), reverse=True)
+    # Sort by score if available (handle None scores)
+    all_results.sort(key=lambda x: x.get("score") or 0, reverse=True)
     
     logger.info(
         f"Retrieved: {len(web_results)} web, {len(vector_results)} vector, "

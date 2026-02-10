@@ -97,10 +97,22 @@ async def startup_event():
     settings = get_settings()
     api_status = settings.validate_api_keys()
     
-    if not api_status["openai"]:
-        logger.warning("OpenAI API key not configured!")
+    # Check LLM provider
+    if settings.llm_provider == "groq":
+        if not api_status["groq"]:
+            logger.warning("Groq API key not configured!")
+        else:
+            logger.info(f"Using Groq LLM: {settings.groq_model}")
+    else:
+        if not api_status["openai"]:
+            logger.warning("OpenAI API key not configured!")
+        else:
+            logger.info(f"Using OpenAI LLM: {settings.openai_model}")
+    
     if not api_status["tavily"]:
         logger.warning("Tavily API key not configured!")
+    
+    logger.info(f"Embedding provider: {settings.embedding_provider}")
     
     # Ensure data directories exist
     Path("./data/documents").mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,83 @@
+PROJECT TYPE: Search Engine Building
+
+
+PROJECT FOCUS:
+
+This project develops an intelligent multi-source search engine that addresses the challenge of answering complex, multi-faceted queries requiring information from diverse sources.
+
+Problem:
+- Traditional search engines return a list of links, leaving users to manually synthesize information across multiple documents
+- Complex queries often require combining knowledge from different source types (web, academic, domain-specific)
+
+Solution:
+- Automatically decompose complex queries into sub-queries
+- Retrieve relevant information from multiple sources (web, academic papers, domain-specific documents)
+- Synthesize comprehensive answers with proper citations
+- Use AI-augmented search to handle nuanced information needs in research and professional contexts
+
+
+DATA OR SOURCES:
+
+The search engine integrates three data sources:
+
+1. Web Search (Tavily API)
+   - Real-time web search for current information and general knowledge
+
+2. Academic Papers (arXiv API)
+   - Computer science, AI, and information retrieval research papers
+
+3. Custom Document Corpus (ChromaDB)
+   - Vector database for domain-specific PDFs, research papers, or technical documentation
+   - Configurable chunking pipeline supporting:
+     - Fixed-size chunking
+     - Sentence-based chunking
+     - Paragraph-based chunking
+     - Semantic chunking
+
+
+USERS AND INFORMATION NEEDS:
+
+Primary Users:
+- Researchers
+- Students
+- Professionals needing comprehensive answers to complex questions
+
+Example Information Needs:
+
+1. Graduate Student Query:
+   - "Compare BM25 and dense retrieval methods for question answering"
+   - Requires synthesis across multiple academic sources
+
+2. Developer Query:
+   - "What are the best practices for implementing RAG systems?"
+   - Needs both current web resources and research papers
+
+3. Researcher Query:
+   - "How does BERT improve search ranking compared to TF-IDF, and what are the computational tradeoffs?"
+   - Requires multi-hop reasoning across sources
+
+
+PLANNED APPROACH:
+
+System Architecture:
+- Built using LangGraph for orchestrating a multi-step agentic workflow
+
+Pipeline Components:
+1. Query analysis and classification
+2. Query decomposition into sub-queries
+3. Intelligent routing to appropriate data sources
+4. Parallel retrieval using:
+   - Sparse methods (BM25)
+   - Dense methods (embedding-based)
+5. Answer synthesis with citation generation
+6. Self-reflection loop for quality assurance
+
+Evaluation Metrics:
+- Retrieval effectiveness: Precision@k, Recall@k, MRR, MAP
+- Answer quality: Faithfulness, Relevance, Completeness
+- Comparative analysis of different retrieval and synthesis configurations
+
+
+TEAM INFORMATION:
+
+This is an individual project.
