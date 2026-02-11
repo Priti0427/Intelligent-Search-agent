@@ -1,81 +1,221 @@
 PROJECT TYPE: Search Engine Building
 
 
+PROJECT TITLE: Agentic Search - Multi-Source Intelligent Search Engine with Self-Reflection
+
+
 PROJECT FOCUS:
 
-This project develops an intelligent multi-source search engine that addresses the challenge of answering complex, multi-faceted queries requiring information from diverse sources.
+This project aims to develop an intelligent multi-source search engine that addresses the challenge of answering complex, multi-faceted queries requiring information from diverse sources.
 
-Problem:
+Problem Statement:
 - Traditional search engines return a list of links, leaving users to manually synthesize information across multiple documents
 - Complex queries often require combining knowledge from different source types (web, academic, domain-specific)
+- Users spend significant time reading, comparing, and synthesizing information from multiple sources
+- No single source contains complete answers for complex research questions
 
-Solution:
-- Automatically decompose complex queries into sub-queries
+Proposed Solution:
+- Build an agentic search system that automatically decomposes complex queries into sub-queries
 - Retrieve relevant information from multiple sources (web, academic papers, domain-specific documents)
 - Synthesize comprehensive answers with proper citations
-- Use AI-augmented search to handle nuanced information needs in research and professional contexts
+- Implement a self-reflection loop where the AI evaluates and improves its own answers
+- Provide a user-friendly chat interface for natural query interaction
 
 
-DATA OR SOURCES:
+IDEA AND MOTIVATION:
 
-The search engine integrates three data sources:
+The idea is inspired by how human researchers work:
+1. Break down a complex question into smaller parts
+2. Search multiple sources (Google, academic databases, personal notes)
+3. Read and extract relevant information
+4. Synthesize findings into a coherent answer
+5. Review and refine the answer for completeness
+
+This project automates this entire workflow using:
+- LangGraph for orchestrating multi-step agentic workflows
+- LangChain for LLM integration and retrieval components
+- Vector databases for semantic search over custom documents
+
+Key Innovation - Self-Reflection Loop:
+The agent will evaluate its own answers on multiple quality dimensions and iterate to improve them, similar to how a researcher reviews their own work before submission.
+
+
+DATA SOURCES:
+
+The search engine will integrate three complementary data sources:
 
 1. Web Search (Tavily API)
-   - Real-time web search for current information and general knowledge
+   - Purpose: Real-time web search for current information and general knowledge
+   - Why: Provides up-to-date information not available in static databases
+   - Expected Use: Current events, recent developments, general explanations
 
 2. Academic Papers (arXiv API)
-   - Computer science, AI, and information retrieval research papers
+   - Purpose: Access to computer science, AI, and information retrieval research
+   - Why: Authoritative source for technical concepts and research findings
+   - Expected Use: Algorithm explanations, research comparisons, technical depth
 
-3. Custom Document Corpus (ChromaDB)
-   - Vector database for domain-specific PDFs, research papers, or technical documentation
-   - Configurable chunking pipeline supporting:
-     - Fixed-size chunking
-     - Sentence-based chunking
-     - Paragraph-based chunking
-     - Semantic chunking
+3. Custom Document Corpus (ChromaDB Vector Database)
+   - Purpose: Domain-specific documents uploaded by users
+   - Why: Enables personalized search over user's own materials
+   - Expected Use: Course materials, research papers, technical documentation
+   - Supported Formats: PDF, DOCX, TXT, Markdown
 
 
 USERS AND INFORMATION NEEDS:
 
-Primary Users:
-- Researchers
-- Students
-- Professionals needing comprehensive answers to complex questions
+Target Users:
+- Graduate students conducting literature reviews
+- Researchers exploring new topics
+- Professionals needing quick synthesis of technical information
+- Anyone with complex questions requiring multiple sources
 
-Example Information Needs:
+Example Use Cases:
 
-1. Graduate Student Query:
-   - "Compare BM25 and dense retrieval methods for question answering"
-   - Requires synthesis across multiple academic sources
+1. Graduate Student:
+   - Query: "Compare BM25 and dense retrieval methods for question answering"
+   - Need: Synthesis across multiple academic sources with citations
+   - Challenge: Information scattered across many papers
 
-2. Developer Query:
-   - "What are the best practices for implementing RAG systems?"
-   - Needs both current web resources and research papers
+2. Developer:
+   - Query: "What are the best practices for implementing RAG systems?"
+   - Need: Both current web resources and foundational research
+   - Challenge: Rapidly evolving field with new techniques
 
-3. Researcher Query:
-   - "How does BERT improve search ranking compared to TF-IDF, and what are the computational tradeoffs?"
-   - Requires multi-hop reasoning across sources
+3. Researcher:
+   - Query: "How does BERT improve search ranking compared to TF-IDF?"
+   - Need: Technical comparison with computational tradeoffs
+   - Challenge: Requires multi-hop reasoning across sources
 
 
 PLANNED APPROACH:
 
-System Architecture:
-- Built using LangGraph for orchestrating a multi-step agentic workflow
+Technology Stack:
+- LangGraph: For orchestrating multi-step agentic workflows with state management
+- LangChain: For LLM abstractions and retrieval components
+- Groq API: For fast, free LLM inference (Llama 3.1 model)
+- ChromaDB: For local vector database storage and retrieval
+- HuggingFace Embeddings: For converting text to semantic vectors
+- FastAPI: For building the REST API backend
+- HTML/CSS/JavaScript: For the chat-based web interface
 
-Pipeline Components:
-1. Query analysis and classification
-2. Query decomposition into sub-queries
-3. Intelligent routing to appropriate data sources
-4. Parallel retrieval using:
-   - Sparse methods (BM25)
-   - Dense methods (embedding-based)
-5. Answer synthesis with citation generation
-6. Self-reflection loop for quality assurance
+Proposed System Architecture (LangGraph Workflow):
 
-Evaluation Metrics:
-- Retrieval effectiveness: Precision@k, Recall@k, MRR, MAP
-- Answer quality: Faithfulness, Relevance, Completeness
-- Comparative analysis of different retrieval and synthesis configurations
+1. Query Analyzer Node
+   - Classify query as simple, complex, or multi-hop
+   - Identify main topics and entities
+   - Determine which data sources are needed
+
+2. Query Decomposer Node
+   - Break complex queries into 2-4 focused sub-queries
+   - Use feedback from reflection to improve decomposition
+   - Assign source hints to each sub-query
+
+3. Router Node
+   - Route each sub-query to appropriate data sources
+   - Make intelligent decisions based on query content
+   - Support routing to multiple sources per sub-query
+
+4. Parallel Retriever Node
+   - Execute retrieval tasks concurrently for efficiency
+   - Aggregate results from all sources
+   - Deduplicate and rank results by relevance
+
+5. Answer Synthesizer Node
+   - Generate comprehensive answers from retrieved context
+   - Include inline citations [Source N] format
+   - Handle cases with limited or no results
+
+6. Self-Reflection Node (Key Innovation)
+   - Evaluate answer quality on multiple dimensions:
+     * Relevance: Does the answer address the query?
+     * Completeness: Are all aspects covered?
+     * Accuracy: Is information consistent with sources?
+     * Citation Quality: Are sources properly cited?
+     * Clarity: Is the answer well-structured?
+   - If quality score < threshold, loop back with feedback
+   - Maximum iterations to prevent infinite loops
+
+
+COURSE CONCEPT INTEGRATION:
+
+This project will demonstrate understanding of key INFO 624 concepts:
+
+- Vector Space Model: Documents and queries represented as vectors
+- TF-IDF/BM25: Understanding sparse retrieval methods
+- Neural Embeddings: Dense retrieval using transformer-based models
+- Cosine Similarity: Semantic matching in vector search
+- Relevance Feedback: Self-reflection implements automated relevance feedback
+- Query Expansion: Decomposition effectively expands queries
+- RAG (Retrieval-Augmented Generation): Core architecture pattern
+- Evaluation Metrics: Quality scoring based on IR principles
+
+
+ANTICIPATED CHALLENGES:
+
+Technical Challenges:
+1. Rate Limiting
+   - Free API tiers have usage limits (Groq, Tavily, arXiv)
+   - Solution: Implement retry logic, caching, and graceful degradation
+
+2. Latency
+   - Multiple API calls and LLM inferences add up
+   - Solution: Parallel retrieval, streaming responses, efficient prompts
+
+3. Answer Quality
+   - LLMs may hallucinate or miss important information
+   - Solution: Self-reflection loop, source grounding, citation requirements
+
+4. Document Ingestion
+   - PDF parsing can be unreliable for complex layouts
+   - Solution: Multiple parsing strategies, chunking optimization
+
+5. Embedding Consistency
+   - Different embedding models produce incompatible vectors
+   - Solution: Standardize on one embedding model (HuggingFace all-MiniLM-L6-v2)
+
+Research Challenges:
+1. Optimal Chunking Strategy
+   - How to split documents for best retrieval performance?
+   - Plan: Experiment with fixed, sentence, and paragraph chunking
+
+2. Source Routing Accuracy
+   - How to correctly route queries to the right sources?
+   - Plan: Use LLM-based routing with clear source descriptions
+
+3. Reflection Effectiveness
+   - Does self-reflection actually improve answer quality?
+   - Plan: Compare answers with and without reflection loop
+
+
+EVALUATION PLAN:
+
+Quality Metrics (via Self-Reflection):
+- Relevance Score (0-1)
+- Completeness Score (0-1)
+- Accuracy Score (0-1)
+- Citation Quality Score (0-1)
+- Clarity Score (0-1)
+- Overall Quality Score (0-1)
+
+System Metrics:
+- Average processing time per query
+- Number of reflection iterations needed
+- Source utilization distribution
+- Retrieval success rate per source
+
+Qualitative Evaluation:
+- Test with sample queries from different domains
+- Compare answers with and without self-reflection
+- Evaluate citation accuracy and relevance
+
+
+EXPECTED DELIVERABLES:
+
+1. Working search engine with web interface
+2. REST API for programmatic access
+3. Documentation of system architecture
+4. Evaluation results and analysis
+5. Source code with clear organization
 
 
 TEAM INFORMATION:
