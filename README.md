@@ -1,4 +1,4 @@
-# Agentic Search
+# Intelligent Agentic Search
 
 An intelligent multi-source search agent built with LangGraph and LangChain for INFO 624: Intelligent Search and Language Models.
 
