@@ -218,6 +218,3 @@ EXPECTED DELIVERABLES:
 5. Source code with clear organization
 
 
-TEAM INFORMATION:
-
-This is an individual project.
