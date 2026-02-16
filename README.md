@@ -1,5 +1,13 @@
 # Intelligent Agentic Search
 
+**Authors:** Priti Sagar, Manjiri Prashant Khodke, Omkar Salunkhe
+
+**Course:** INFO 624 - Intelligent Search and Language Models | Drexel University
+
+**GitHub Repository:** https://github.com/Priti0427/Intelligent-Search-agent
+
+---
+
 An intelligent multi-source search agent built with LangGraph and LangChain for INFO 624: Intelligent Search and Language Models.
 
 ## Project Overview
@@ -100,8 +108,8 @@ If quality score < 0.7, the agent iterates with specific feedback to improve.
 
 ```bash
 # Clone the repository
-git clone <repository-url>
-cd agentic-search
+git clone https://github.com/Priti0427/Intelligent-Search-agent.git
+cd Intelligent-Search-agent
 
 # Create virtual environment (use Python 3.11)
 python3.11 -m venv venv
@@ -245,3 +253,7 @@ MIT License - See LICENSE file for details.
 ## Acknowledgments
 
 - INFO 624: Intelligent Search and Language Models - Drexel University
+
+---
+
+**Developed by:** Priti Sagar, Manjiri Prashant Khodke, Omkar Salunkhe
