@@ -190,29 +190,70 @@ All answers include properly formatted citations:
 | Relevance Feedback | Self-reflection loop for quality improvement |
 | Query Expansion | Query decomposition into focused sub-queries |
 | RAG | Retrieval-Augmented Generation architecture |
-| Evaluation Metrics | Multi-dimensional quality scoring system |
+| Evaluation Metrics | Precision, Recall, F1, nDCG, MAP, MRR |
 
 ---
 
-## 6. Screenshots
+## 6. Formal Evaluation
 
-### 6.1 Main Interface
+### 6.1 Evaluation Metrics
+
+The system includes a formal IR evaluation module with the following metrics:
+
+| Metric | Formula | Description |
+|--------|---------|-------------|
+| **Precision** | Relevant Retrieved / Total Retrieved | Fraction of retrieved docs that are relevant |
+| **Recall** | Relevant Retrieved / Total Relevant | Fraction of relevant docs that are retrieved |
+| **F1 Score** | 2 × (P × R) / (P + R) | Harmonic mean of precision and recall |
+| **P@k** | Relevant in top k / k | Precision at rank k |
+| **nDCG@k** | DCG@k / IDCG@k | Normalized ranking quality |
+| **MAP** | Mean of AP across queries | Mean Average Precision |
+| **MRR** | Mean of 1/rank of first relevant | Mean Reciprocal Rank |
+
+### 6.2 Test Cases
+
+| # | Query | Information Need |
+|---|-------|------------------|
+| 1 | What is RAG in AI? | Understanding RAG concept |
+| 2 | Compare BM25 and dense retrieval | Retrieval method comparison |
+| 3 | BERT vs TF-IDF for search ranking | Neural vs traditional ranking |
+| 4 | Main components of a search engine | Search architecture |
+| 5 | Vector embeddings for semantic search | Understanding embeddings |
+| 6 | Query decomposition in IR | Query processing |
+
+### 6.3 Running Evaluation
+
+```bash
+# Via API
+curl -X POST http://localhost:8000/api/evaluation/run \
+  -H "Content-Type: application/json" \
+  -d '{"max_results": 10}'
+
+# Via command line
+python -m src.evaluation.evaluator --output EVALUATION_RESULTS.md
+```
+
+---
+
+## 7. Screenshots
+
+### 7.1 Main Interface
 
 *[Screenshot: Main chat interface showing the search input and welcome message]*
 
-### 6.2 Search Results
+### 7.2 Search Results
 
 *[Screenshot: Example search results with citations and quality scores]*
 
-### 6.3 System Status Panel
+### 7.3 System Status Panel
 
 *[Screenshot: Sidebar showing system status and search statistics]*
 
 ---
 
-## 7. How to Run
+## 8. How to Run
 
-### 7.1 Installation
+### 8.1 Installation
 
 ```bash
 # Clone the repository
@@ -227,7 +268,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 7.2 Configuration
+### 8.2 Configuration
 
 ```bash
 # Copy example environment file
@@ -238,21 +279,21 @@ cp .env.example .env
 # TAVILY_API_KEY=your_tavily_api_key
 ```
 
-### 7.3 Running the Application
+### 8.3 Running the Application
 
 ```bash
 # Start the FastAPI server
 python -m uvicorn src.api.main:app --host 0.0.0.0 --port 8000
 ```
 
-### 7.4 Accessing the Interface
+### 8.4 Accessing the Interface
 
 - **Chat Interface**: http://localhost:8000
 - **API Documentation**: http://localhost:8000/docs
 
 ---
 
-## 8. API Endpoints
+## 9. API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
@@ -262,12 +303,17 @@ python -m uvicorn src.api.main:app --host 0.0.0.0 --port 8000
 | `/api/search/stream` | POST | Streaming search with real-time updates |
 | `/api/ingest` | POST | Ingest documents into vector database |
 | `/api/stats` | GET | System statistics |
+| `/api/evaluation/test-cases` | GET | Get evaluation test cases |
+| `/api/evaluation/run` | POST | Run formal IR evaluation |
+| `/api/evaluation/metrics-info` | GET | Get metric definitions |
 
 ---
 
-## 9. Evaluation Metrics
+## 10. Evaluation Results
 
-### 9.1 Quality Metrics (Automated)
+See [EVALUATION_RESULTS.md](EVALUATION_RESULTS.md) for detailed evaluation results.
+
+### 10.1 Quality Metrics (Automated)
 
 - Relevance Score (0-1)
 - Completeness Score (0-1)
@@ -275,7 +321,7 @@ python -m uvicorn src.api.main:app --host 0.0.0.0 --port 8000
 - Citation Quality Score (0-1)
 - Clarity Score (0-1)
 
-### 9.2 System Performance Metrics
+### 10.2 System Performance Metrics
 
 - Average query processing time
 - Number of reflection iterations per query
@@ -284,19 +330,19 @@ python -m uvicorn src.api.main:app --host 0.0.0.0 --port 8000
 
 ---
 
-## 10. GitHub Repository
+## 11. GitHub Repository
 
 **Repository URL:** https://github.com/Priti0427/Intelligent-Search-agent
 
 ---
 
-## 11. Conclusion
+## 12. Conclusion
 
 Agentic Search demonstrates the practical application of modern information retrieval concepts in building an intelligent search system. By combining LangGraph's workflow orchestration with multi-source retrieval and self-reflection mechanisms, the system provides comprehensive, cited answers to complex queries while maintaining quality through automated evaluation.
 
 ---
 
-## 12. References
+## 13. References
 
 1. Lewis, P., et al. (2020). Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks. *NeurIPS*.
 2. Devlin, J., et al. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. *NAACL*.

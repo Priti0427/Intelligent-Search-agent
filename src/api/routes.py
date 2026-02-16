@@ -5,7 +5,7 @@ API Routes for Agentic Search.
 import logging
 import time
 from datetime import datetime
-from typing import AsyncGenerator
+from typing import AsyncGenerator, List
 
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import StreamingResponse
@@ -23,6 +23,10 @@ from src.api.schemas import (
     SearchResponse,
     ServiceStatus,
     StreamEvent,
+    EvaluationRequest,
+    EvaluationResponse,
+    QueryEvaluationResult as QueryEvalResultSchema,
+    TestCaseInfo,
 )
 from src.ingestion import DocumentEmbedder
 from src.retrievers import get_vector_retriever
@@ -314,3 +318,168 @@ async def get_stats():
             "status": "error",
             "error": str(e),
         }
+
+
+# === Evaluation Endpoints ===
+
+@router.get("/evaluation/test-cases", response_model=List[TestCaseInfo], tags=["Evaluation"])
+async def get_test_cases():
+    """
+    Get all available test cases for evaluation.
+    
+    Returns the list of test queries with their information needs
+    and relevance criteria.
+    """
+    from src.evaluation.test_cases import get_test_cases as get_cases
+    
+    test_cases = get_cases()
+    return [
+        TestCaseInfo(
+            index=i,
+            query=tc.query,
+            information_need=tc.information_need,
+            relevant_keywords=tc.relevant_keywords[:10],  # Limit for response size
+            expected_topics=tc.expected_topics,
+            relevant_sources=tc.relevant_sources,
+        )
+        for i, tc in enumerate(test_cases)
+    ]
+
+
+@router.post("/evaluation/run", response_model=EvaluationResponse, tags=["Evaluation"])
+async def run_evaluation(request: EvaluationRequest):
+    """
+    Run formal IR evaluation on test cases.
+    
+    This endpoint:
+    1. Executes test queries through the search system
+    2. Judges relevance of retrieved results
+    3. Calculates precision, recall, F1, nDCG, MAP, MRR
+    4. Returns comprehensive evaluation report
+    
+    Note: This may take several minutes depending on the number of test cases.
+    """
+    from src.evaluation import SearchEvaluator, get_test_cases as get_cases
+    
+    logger.info("Starting evaluation run")
+    
+    try:
+        # Get test cases
+        all_test_cases = get_cases()
+        
+        # Filter to specific indices if requested
+        if request.test_case_indices:
+            test_cases = [
+                all_test_cases[i] 
+                for i in request.test_case_indices 
+                if 0 <= i < len(all_test_cases)
+            ]
+        else:
+            test_cases = all_test_cases
+        
+        if not test_cases:
+            raise HTTPException(status_code=400, detail="No valid test cases selected")
+        
+        # Run evaluation
+        evaluator = SearchEvaluator(test_cases=test_cases)
+        report = await evaluator.run_evaluation(max_results=request.max_results)
+        
+        # Convert to response schema
+        query_results = [
+            QueryEvalResultSchema(
+                query=qr.query,
+                information_need=qr.information_need,
+                num_retrieved=qr.num_retrieved,
+                num_relevant=qr.num_relevant,
+                num_relevant_retrieved=qr.num_relevant_retrieved,
+                precision=qr.precision,
+                recall=qr.recall,
+                f1=qr.f1,
+                precision_at_5=qr.precision_at_5,
+                precision_at_10=qr.precision_at_10,
+                ndcg_at_5=qr.ndcg_at_5,
+                ndcg_at_10=qr.ndcg_at_10,
+                average_precision=qr.average_precision,
+                reciprocal_rank=qr.reciprocal_rank,
+                sources_searched=qr.sources_searched,
+                processing_time_ms=qr.processing_time_ms,
+            )
+            for qr in report.query_results
+        ]
+        
+        return EvaluationResponse(
+            timestamp=report.timestamp,
+            num_queries=report.num_queries,
+            mean_precision=report.mean_precision,
+            mean_recall=report.mean_recall,
+            mean_f1=report.mean_f1,
+            mean_precision_at_5=report.mean_precision_at_5,
+            mean_precision_at_10=report.mean_precision_at_10,
+            mean_ndcg_at_5=report.mean_ndcg_at_5,
+            mean_ndcg_at_10=report.mean_ndcg_at_10,
+            map_score=report.map_score,
+            mrr_score=report.mrr_score,
+            avg_processing_time_ms=report.avg_processing_time_ms,
+            total_results_retrieved=report.total_results_retrieved,
+            total_relevant_found=report.total_relevant_found,
+            query_results=query_results,
+        )
+        
+    except Exception as e:
+        logger.error(f"Evaluation failed: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get("/evaluation/metrics-info", tags=["Evaluation"])
+async def get_metrics_info():
+    """
+    Get information about the evaluation metrics used.
+    
+    Returns definitions and formulas for each metric.
+    """
+    return {
+        "metrics": [
+            {
+                "name": "Precision",
+                "formula": "Relevant Retrieved / Total Retrieved",
+                "description": "Fraction of retrieved documents that are relevant",
+                "range": "0 to 1 (higher is better)",
+            },
+            {
+                "name": "Recall",
+                "formula": "Relevant Retrieved / Total Relevant",
+                "description": "Fraction of relevant documents that are retrieved",
+                "range": "0 to 1 (higher is better)",
+            },
+            {
+                "name": "F1 Score",
+                "formula": "2 × (Precision × Recall) / (Precision + Recall)",
+                "description": "Harmonic mean of precision and recall",
+                "range": "0 to 1 (higher is better)",
+            },
+            {
+                "name": "P@k (Precision at k)",
+                "formula": "Relevant in top k / k",
+                "description": "Precision considering only top k results",
+                "range": "0 to 1 (higher is better)",
+            },
+            {
+                "name": "nDCG@k",
+                "formula": "DCG@k / IDCG@k",
+                "description": "Normalized Discounted Cumulative Gain - measures ranking quality",
+                "range": "0 to 1 (higher is better)",
+            },
+            {
+                "name": "MAP (Mean Average Precision)",
+                "formula": "Mean of AP across all queries",
+                "description": "Average precision at each relevant document, averaged across queries",
+                "range": "0 to 1 (higher is better)",
+            },
+            {
+                "name": "MRR (Mean Reciprocal Rank)",
+                "formula": "Mean of 1/rank of first relevant result",
+                "description": "How quickly the first relevant result appears",
+                "range": "0 to 1 (higher is better)",
+            },
+        ]
+    }

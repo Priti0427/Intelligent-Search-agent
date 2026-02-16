@@ -156,3 +156,108 @@ class StreamEvent(BaseModel):
     node: Optional[str] = None
     data: Dict[str, Any] = {}
     timestamp: datetime = Field(default_factory=datetime.utcnow)
+
+
+# === Evaluation Schemas ===
+
+class EvaluationRequest(BaseModel):
+    """Request schema for evaluation endpoint."""
+    
+    max_results: int = Field(default=10, description="Max results per query", ge=1, le=20)
+    test_case_indices: Optional[List[int]] = Field(
+        None, 
+        description="Specific test case indices to run (0-indexed). If None, runs all."
+    )
+    
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "max_results": 10,
+                    "test_case_indices": [0, 1, 2],
+                }
+            ]
+        }
+    }
+
+
+class QueryEvaluationResult(BaseModel):
+    """Evaluation results for a single query."""
+    
+    query: str
+    information_need: str
+    num_retrieved: int
+    num_relevant: int
+    num_relevant_retrieved: int
+    precision: float
+    recall: float
+    f1: float
+    precision_at_5: float
+    precision_at_10: float
+    ndcg_at_5: float
+    ndcg_at_10: float
+    average_precision: float
+    reciprocal_rank: float
+    sources_searched: List[str]
+    processing_time_ms: float
+
+
+class EvaluationResponse(BaseModel):
+    """Response schema for evaluation endpoint."""
+    
+    timestamp: str
+    num_queries: int
+    
+    # Aggregate metrics
+    mean_precision: float
+    mean_recall: float
+    mean_f1: float
+    mean_precision_at_5: float
+    mean_precision_at_10: float
+    mean_ndcg_at_5: float
+    mean_ndcg_at_10: float
+    map_score: float
+    mrr_score: float
+    
+    # Performance
+    avg_processing_time_ms: float
+    total_results_retrieved: int
+    total_relevant_found: int
+    
+    # Per-query results
+    query_results: List[QueryEvaluationResult]
+    
+    model_config = {
+        "json_schema_extra": {
+            "examples": [
+                {
+                    "timestamp": "2026-02-16T12:00:00",
+                    "num_queries": 6,
+                    "mean_precision": 0.75,
+                    "mean_recall": 0.80,
+                    "mean_f1": 0.77,
+                    "mean_precision_at_5": 0.72,
+                    "mean_precision_at_10": 0.68,
+                    "mean_ndcg_at_5": 0.85,
+                    "mean_ndcg_at_10": 0.82,
+                    "map_score": 0.78,
+                    "mrr_score": 0.90,
+                    "avg_processing_time_ms": 2500.0,
+                    "total_results_retrieved": 60,
+                    "total_relevant_found": 45,
+                    "query_results": [],
+                }
+            ]
+        }
+    }
+
+
+class TestCaseInfo(BaseModel):
+    """Information about a test case."""
+    
+    index: int
+    query: str
+    information_need: str
+    relevant_keywords: List[str]
+    expected_topics: List[str]
+    relevant_sources: List[str]
