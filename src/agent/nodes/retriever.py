@@ -149,17 +149,11 @@ async def retrieve_parallel_node(state: SearchState) -> dict[str, Any]:
     vector_results = deduplicate(vector_results)
     arxiv_results = deduplicate(arxiv_results)
     
-    # Aggregate all results with source attribution
+    # Aggregate all results (source_type already set by retrievers)
     all_results = []
-    for i, r in enumerate(web_results[:5]):  # Top 5 from each source
-        r["source_type"] = "web"
-        all_results.append(r)
-    for i, r in enumerate(vector_results[:5]):
-        r["source_type"] = "documents"
-        all_results.append(r)
-    for i, r in enumerate(arxiv_results[:5]):
-        r["source_type"] = "academic"
-        all_results.append(r)
+    all_results.extend(web_results[:5])  # Top 5 from each source
+    all_results.extend(vector_results[:5])
+    all_results.extend(arxiv_results[:5])
     
     # Sort by score if available (handle None scores)
     all_results.sort(key=lambda x: x.get("score") or 0, reverse=True)
