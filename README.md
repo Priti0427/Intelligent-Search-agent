@@ -1,10 +1,6 @@
 # Intelligent Agentic Search
 
-**Authors:** Priti Sagar, Manjiri Prashant Khodke, Omkar Salunkhe
-
 **Course:** INFO 624 - Intelligent Search and Language Models | Drexel University
-
-**GitHub Repository:** https://github.com/Priti0427/Intelligent-Search-agent
 
 ---
 
@@ -75,20 +71,7 @@ If quality score < 0.7, the agent iterates with specific feedback to improve.
 - Decomposes complex queries into focused sub-queries
 - Routes sub-queries to the most appropriate sources
 
-## Course Concept Integration
-
-| Concept | Implementation |
-|---------|----------------|
-| Vector Space Models | ChromaDB embeddings, cosine similarity |
-| Neural Embeddings | HuggingFace sentence-transformers |
-| BM25/Sparse Retrieval | Understanding of traditional IR methods |
-| Dense Retrieval | Semantic search with embeddings |
-| Relevance Feedback | Self-reflection loop for quality improvement |
-| Query Expansion | Query decomposition into sub-queries |
-| RAG | Retrieval-Augmented Generation architecture |
-| Evaluation Metrics | Multi-dimensional quality scoring |
-
-## Tech Stack
+## Tech Stack Used
 
 | Component | Technology |
 |-----------|------------|
@@ -246,13 +229,10 @@ Supported formats: PDF, DOCX, TXT, Markdown
 - Number of reflection iterations
 - Sources searched per query
 
-## License
-
-MIT License - See LICENSE file for details.
 
 ## Acknowledgments
 
-- INFO 624: Intelligent Search and Language Models - Drexel University
+- INFO 624: Intelligent Search and Language Models(Professor Mat Kelly, Drexel University)
 
 ---
 
