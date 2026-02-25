@@ -1,11 +1,5 @@
 # Agentic Search Evaluation Results
 
-**Project:** Agentic Search - Multi-Source Intelligent Search Engine
-
-**Authors:** Priti Sagar, Manjiri Prashant Khodke, Omkar Salunkhe
-
-**Course:** INFO 624 - Intelligent Search and Language Models | Drexel University
-
 ---
 
 ## 1. Evaluation Overview
@@ -223,6 +217,3 @@ This evaluation methodology aligns with the INFO 624 project requirements for fo
 
 ---
 
-**GitHub Repository:** https://github.com/Priti0427/Intelligent-Search-agent
-
-**Developed by:** Priti Sagar, Manjiri Prashant Khodke, Omkar Salunkhe
