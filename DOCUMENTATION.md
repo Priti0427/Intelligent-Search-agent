@@ -1,11 +1,5 @@
 # Agentic Search: Multi-Source Intelligent Search Engine
 
-**Authors:** Priti Sagar, Manjiri Prashant Khodke, Omkar Salunkhe
-
-**Course:** INFO 624 - Intelligent Search and Language Models
-
-**Institution:** Drexel University
-
 ---
 
 ## Abstract
@@ -328,11 +322,6 @@ See [EVALUATION_RESULTS.md](EVALUATION_RESULTS.md) for detailed evaluation resul
 - Sources searched per query
 - Documents indexed in vector store
 
----
-
-## 11. GitHub Repository
-
-**Repository URL:** https://github.com/Priti0427/Intelligent-Search-agent
 
 ---
 
@@ -351,9 +340,3 @@ Agentic Search demonstrates the practical application of modern information retr
 5. LangGraph Documentation. https://langchain-ai.github.io/langgraph/
 
 ---
-
-**Developed by:** Priti Sagar, Manjiri Prashant Khodke, Omkar Salunkhe
-
-**Course:** INFO 624 - Intelligent Search and Language Models
-
-**Institution:** Drexel University
