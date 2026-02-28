@@ -213,7 +213,5 @@ The Agentic Search system demonstrates effective multi-source retrieval with for
 - API and CLI interfaces for running evaluations
 - Detailed per-query analysis
 
-This evaluation methodology aligns with the INFO 624 project requirements for formal search engine evaluation.
-
 ---
 
