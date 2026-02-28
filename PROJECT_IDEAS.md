@@ -191,14 +191,3 @@ Whichever project you choose, structure it to demonstrate course concepts:
 6. **Documentation** - Explain design decisions referencing course concepts
 
 ---
-
-## Next Steps
-
-- [ ] Review project options and select one based on interest and time constraints
-- [ ] Define specific scope, dataset, and deliverables for chosen project
-- [ ] Set up development environment with LangChain, LangGraph, and vector DB
-- [ ] Implement classical IR baseline (TF-IDF/BM25)
-- [ ] Add neural retrieval with embeddings and LangChain
-- [ ] Add advanced features (LangGraph agents, reranking, etc.)
-- [ ] Implement comprehensive evaluation comparing methods
-- [ ] Document findings with course concept references
