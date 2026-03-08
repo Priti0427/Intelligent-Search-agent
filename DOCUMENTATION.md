@@ -138,7 +138,7 @@ The system integrates three distinct retrieval sources:
 |--------|----------|------------|
 | Web Search | Current events, general knowledge | Tavily API |
 | Academic Papers | Research, technical content | arXiv API |
-| Custom Documents | User-uploaded PDFs, docs, notes | ChromaDB + HuggingFace embeddings |
+| Custom Documents | User-uploaded PDFs, docs, notes | ChromaDB(VectorDB) + HuggingFace embeddings |
 
 ### 4.2 Self-Reflection Loop
 
