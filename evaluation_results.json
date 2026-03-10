@@ -1,0 +1,1017 @@
+{
+  "timestamp": "2026-03-10T02:15:07.582114",
+  "num_queries": 5,
+  "total_evaluation_time_ms": 467774.0271091461,
+  "layer1_ir_metrics": {
+    "per_query": [
+      {
+        "query": "How does combining BM25 with dense retrieval in a hybrid search system improve RAG pipeline accuracy compared to using either method alone?",
+        "information_need": "User wants to understand hybrid retrieval approaches that combine sparse (BM25) and dense (neural) retrieval, specifically in the context of Retrieval-Augmented Generation pipelines, and why the combination outperforms individual methods.",
+        "num_retrieved": 10,
+        "num_relevant": 3,
+        "num_relevant_retrieved": 3,
+        "precision": 0.3,
+        "recall": 1.0,
+        "f1": 0.4615384615384615,
+        "precision_at_5": 0.4,
+        "precision_at_10": 0.3,
+        "recall_at_5": 0.6666666666666666,
+        "recall_at_10": 1.0,
+        "ndcg_at_5": 0.7968124369890611,
+        "ndcg_at_10": 0.916326357565182,
+        "average_precision": 0.7222222222222222,
+        "reciprocal_rank": 1.0,
+        "sources_searched": [
+          "academic",
+          "documents"
+        ],
+        "processing_time_ms": 86001.01900100708,
+        "relevance_judgments": [
+          {
+            "rank": 1,
+            "title": "INFO624-Week6-Probabilistic",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 2.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nWhy BM25 Still Matters Today\u00a7Default first-stage retriever\u00a7Fast, robust, explainable\u00a7Feeds neural rerankersand RAG systems\u00a7BM25 estimates document releva"
+          },
+          {
+            "rank": 2,
+            "title": "INFO624-Week6-Probabilistic",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nIR Theory vs. Practice\u00a7Standard Vector Space Model: \u00a7Empirical for the most part; success measured by results\u00a7Few properties provable\u00a7Binary Independence"
+          },
+          {
+            "rank": 3,
+            "title": "INFO624-Week6-Probabilistic",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nWhat BM25 Scores (Conceptually)\u00a7BM25 scores documents by summing term contributions\u00a7Considers term rarity in the collection\u00a7Considers term frequency in t"
+          },
+          {
+            "rank": 4,
+            "title": "INFO624-Week6-Probabilistic",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nFrom PRP to BM25(Conceptual, Not Mathematical)\u00a7Still ranks by decreasing probability of relevance\u00a7Replaces binary term presence with TF saturation\u00a7Replac"
+          },
+          {
+            "rank": 5,
+            "title": "INFO624-Week6-Probabilistic",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nThree Core Ideas in BM25\u00a7Inverse Document Frequency (IDF): rare terms matter more\u00a7TF saturation: diminishing returns for frequent terms\u00a7Document length n"
+          },
+          {
+            "rank": 6,
+            "title": "INFO624-Week6-Probabilistic",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 2.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nBM25 vs. Embeddings: Not Either/Or\u00a7BM25: exact term matching, fast, explainable\u00a7Embeddings: semantic matching, flexible, expensive\u00a7Modern systems combine"
+          },
+          {
+            "rank": 7,
+            "title": "Observation of the rare $B^0_s\\to\u03bc^+\u03bc^-$ decay from the combined analysis of CMS and LHCb data",
+            "source_type": "academic",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": ""
+          },
+          {
+            "rank": 8,
+            "title": "Expected Performance of the ATLAS Experiment - Detector, Trigger and Physics",
+            "source_type": "academic",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": ""
+          },
+          {
+            "rank": 9,
+            "title": "Deep Search for Joint Sources of Gravitational Waves and High-Energy Neutrinos with IceCube During the Third Observing Run of LIGO and Virgo",
+            "source_type": "academic",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": ""
+          },
+          {
+            "rank": 10,
+            "title": "Search for High-energy Neutrinos from Binary Neutron Star Merger GW170817 with ANTARES, IceCube, and the Pierre Auger Observatory",
+            "source_type": "academic",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": ""
+          }
+        ]
+      },
+      {
+        "query": "Compare the effectiveness of query decomposition vs query expansion for handling complex multi-faceted information needs",
+        "information_need": "User wants a detailed comparison of two query processing strategies: decomposing complex queries into sub-queries vs expanding queries with additional terms, evaluating which is more effective for complex information needs.",
+        "num_retrieved": 10,
+        "num_relevant": 1,
+        "num_relevant_retrieved": 1,
+        "precision": 0.1,
+        "recall": 1.0,
+        "f1": 0.18181818181818182,
+        "precision_at_5": 0.0,
+        "precision_at_10": 0.1,
+        "recall_at_5": 0.0,
+        "recall_at_10": 1.0,
+        "ndcg_at_5": 0.0,
+        "ndcg_at_10": 0.36928445595674464,
+        "average_precision": 0.1111111111111111,
+        "reciprocal_rank": 0.1111111111111111,
+        "sources_searched": [
+          "documents"
+        ],
+        "processing_time_ms": 42449.846029281616,
+        "relevance_judgments": [
+          {
+            "rank": 1,
+            "title": "INFO624-Week1-Introduction",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nThe index we just built\u00a7How do we process a query?\n34\nMRS Sec. 1.3\nINFO624 - Intelligent Search and Language ModelsWinter 2026 \u2013 Week 1"
+          },
+          {
+            "rank": 2,
+            "title": "INFO624-Week7-WebIR",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nQuery Complexity Distribution\n21\nPower law (like Zipf's Law): few popular broad queries,many rare specific queries"
+          },
+          {
+            "rank": 3,
+            "title": "INFO624-Week7-WebIR",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nClassic Web IR Model\n16\nWeb(part of the Internet)\n1. collecting information/pages2. indexing\nGoogle 3. searching"
+          },
+          {
+            "rank": 4,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nRanked retrieval\u00a7Thus far, our queries have all been Boolean.\u00a7Documents either match or do not.\u00a7Good for expert users with precise understanding of their"
+          },
+          {
+            "rank": 5,
+            "title": "INFO624-Week8-Evaluation",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nDCG: (Similar) ExampleData Collection\u00a7A collection of 10 documents\u00a7Doc 1\u00a7Doc 2\u00a7Doc 3\u00a7Doc 4\u00a7Doc 5\u00a7Doc 6\u00a7Doc 7\u00a7Doc 8\u00a7Doc 9\u00a7Doc 10\nQuery and Relevance\u00a7Given"
+          },
+          {
+            "rank": 6,
+            "title": "INFO624-Week8-Evaluation",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nPrecision & Recall: ExampleData Collection\u00a7A collection of 10 documents\u00a7Doc 1\u00a7Doc 2\u00a7Doc 3\u00a7Doc 4\u00a7Doc 5\u00a7Doc 6\u00a7Doc 7\u00a7Doc 8\u00a7Doc 9\u00a7Doc 10\nQuery and Relevance\u00a7"
+          },
+          {
+            "rank": 7,
+            "title": "INFO624-Week8-Evaluation",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nPerplexity: Intuition & Limitations\u00a7Equivalent to exponentiated cross-entropy\u00a7Sensitive to tokenization\u00a7Does NOT measure semantic correctness\u00a7Low perplex"
+          },
+          {
+            "rank": 8,
+            "title": "INFO624-Week7-WebIR",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nHITS Equations\u00a7Authority update: a(p) = sum of hub scores linking to p\u00a7Hub update: h(p) = sum of authority scores p links to\u00a7Equivalent to eigenvector co"
+          },
+          {
+            "rank": 9,
+            "title": "INFO624-Week9-RelevanceFeedback",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 2.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nQuery Expansion\u00a7In relevance feedback, users give additional input (relevant/non-relevant) on documents, which is used to reweight terms in the documents"
+          },
+          {
+            "rank": 10,
+            "title": "INFO624-Week9-RelevanceFeedback",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nNeural Query Expansion vs Classical Expansion\u00a7Classical: term co-occurrence\u00a7Statistical, surface-level\u00a7Term co-occurrence,context-agnostic\u00a7Manual thesaur"
+          }
+        ]
+      },
+      {
+        "query": "Explain how BERT-based cross-encoders re-rank search results and why they outperform bi-encoder approaches for passage retrieval",
+        "information_need": "User wants to understand the architectural differences between cross-encoders and bi-encoders for search re-ranking, and the quality vs efficiency tradeoffs.",
+        "num_retrieved": 10,
+        "num_relevant": 9,
+        "num_relevant_retrieved": 9,
+        "precision": 0.9,
+        "recall": 1.0,
+        "f1": 0.9473684210526316,
+        "precision_at_5": 1.0,
+        "precision_at_10": 0.9,
+        "recall_at_5": 0.5555555555555556,
+        "recall_at_10": 1.0,
+        "ndcg_at_5": 0.8954693654620385,
+        "ndcg_at_10": 0.9597970073343149,
+        "average_precision": 0.9888888888888889,
+        "reciprocal_rank": 1.0,
+        "sources_searched": [
+          "academic",
+          "documents"
+        ],
+        "processing_time_ms": 44632.77840614319,
+        "relevance_judgments": [
+          {
+            "rank": 1,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 3.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nHow BERT Is Used in RetrievalSetupWhat happensIR implicationBi-encoderQuery & doc encoded separatelyFast, scalableCross-encoderQuery + doc togetherAccura"
+          },
+          {
+            "rank": 2,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nINFO624 - Intelligent Search and Language ModelsWinter 2026 \u2013 Week 5 69\nBERTBidirectional Encoder Representations from Transformers\nDevlin, Jacob, et al."
+          },
+          {
+            "rank": 3,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 2.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nBERT: Contextual Embeddings for Retrieval\u00a7Transformer-based language model\u00a7Uses self-attention\u00a7i.e., when processing a word, which other words in sentenc"
+          },
+          {
+            "rank": 4,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 2.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nDense Retrieval with BERT Encoders1.Encode documents with BERT \u2192 densevectors2.Encode query with same (or paired) BERT3.Compute cosine similarity4.Neares"
+          },
+          {
+            "rank": 5,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nFrom Salton to BERT\u00a7TF-IDF: engineered lexical weights\u00a7Word embeddings: learned semantics\u00a7BERT: learned contextual semantics\u00a7Neural IR: same vector space"
+          },
+          {
+            "rank": 6,
+            "title": "INFO624-Week9-RelevanceFeedback",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 2.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nCross-Encoder Re-Ranking\u00a7Second-stage ranking\u00a7Deep interaction between query and document\u00a7Transformer-based models\u00a7Higher accuracy\u00a7Higher computational c"
+          },
+          {
+            "rank": 7,
+            "title": "INFO624-Week7-WebIR",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nNeural Ranking with Graph Signals\u00a7Modern search uses hybrid ranking models\u00a7Text encoders (e.g., BERT)\u00a7Graph features (PageRank, embeddings)\u00a7User behavior"
+          },
+          {
+            "rank": 8,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nQuery & Document Encoders(two common setups)\u00a7Bi-encoder\u00a7Query encoder\u00a7Document encoder\u00a7Fast, scalable\u00a7Cross-encoder\u00a7Query + document together\u00a7More accura"
+          },
+          {
+            "rank": 9,
+            "title": "To What Degree Can Language Borders Be Blurred In BERT-based Multilingual Spoken Language Understanding?",
+            "source_type": "academic",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": ""
+          },
+          {
+            "rank": 10,
+            "title": "A Primer in BERTology: What we know about how BERT works",
+            "source_type": "academic",
+            "is_relevant": true,
+            "relevance_score": 1.0,
+            "excerpt": ""
+          }
+        ]
+      },
+      {
+        "query": "What are the key architectural differences between Agentic RAG and standard RAG, and how does self-reflection improve answer quality?",
+        "information_need": "User wants to understand how agentic RAG systems differ from standard RAG, particularly the role of planning, tool use, and self-reflection loops in improving answer quality.",
+        "num_retrieved": 10,
+        "num_relevant": 0,
+        "num_relevant_retrieved": 0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "precision_at_5": 0.0,
+        "precision_at_10": 0.0,
+        "recall_at_5": 0.0,
+        "recall_at_10": 0.0,
+        "ndcg_at_5": 0.0,
+        "ndcg_at_10": 0.31546487678572877,
+        "average_precision": 0.0,
+        "reciprocal_rank": 0.0,
+        "sources_searched": [
+          "documents"
+        ],
+        "processing_time_ms": 90762.99595832825,
+        "relevance_judgments": [
+          {
+            "rank": 1,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nDocument frequency\u00a7Rare terms are more informative than frequent terms\u00a7Consider a term in the query that is rare in the collection (e.g., arachnocentric)"
+          },
+          {
+            "rank": 2,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nBinary \u2192 count \u2192 weight matrix\n44\nEach document is now represented by a real-valued vector of tf-idf weights\nSec. 6.3\nAntony and CleopatraJulius CaesarTh"
+          },
+          {
+            "rank": 3,
+            "title": "INFO624-Week7-WebIR",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nBibliographic Coupling -Example\u00a7Bibliographic coupling\u00a7Example: B and G\u00a7How often do B and Gshare the same links?\u00a7B links to (C,D,E)\u00a7G links to (D,E,F)\u00a7I"
+          },
+          {
+            "rank": 4,
+            "title": "INFO624-Week7-WebIR",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nBasic terms on the Web\u00a7URL: Uniform Resource Locator\u00a7The address of a Web page/document\u00a7HTML: Hypertext Markup Language\u00a7The language to author Web pages\u00a7"
+          },
+          {
+            "rank": 5,
+            "title": "INFO624-Week2-BagWords",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nSome subwordtokenization methods\u00a7Byte Pair Encoding (BPE)\u00a7WordPiece\u00a7Unigram LM\u00a7These all deal with (compared to conv. tokenization):\u00a7Openvocabularies (ne"
+          },
+          {
+            "rank": 6,
+            "title": "INFO624-Week8-Evaluation",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nUser-Centered Evaluation Methods\u00a7Controlled lab studies\u00a7User satisfaction surveys (Likert scales)\u00a7Users can be satisfied with bad results & dissatisfied "
+          },
+          {
+            "rank": 7,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nIntuition\u00a7Consider the sentence:\u00a7The animal didn't cross the street because itwas too tired.\u00a7Does \"it\" refer to animal or street?\u00a7Self-attention lets the"
+          },
+          {
+            "rank": 8,
+            "title": "INFO624-Week8-Evaluation",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nAdditional Generative Model Metrics\u00a7ROUGE: Recall-oriented metric (often for summarization)\u00a7BERTScore: Embedding-based semantic similarity\u00a7Exact Match (E"
+          },
+          {
+            "rank": 9,
+            "title": "INFO624-Week7-WebIR",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nUsers'empirical evaluation of results\u00a7Quality of pages varies widely\u00a7Relevance is not enough\u00a7Other desirable qualities (non IR!!)\u00a7Content: Trustworthy, d"
+          },
+          {
+            "rank": 10,
+            "title": "INFO624-Week8-Evaluation",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 0.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nInterpretability Evaluation\u00a7Explanation fidelity\u00a7Does explanation reflect actual reasoning\u00a7Feature attribution consistency\u00a7Perturbation tests\u00a7Remove word"
+          }
+        ]
+      },
+      {
+        "query": "How do vector embeddings and semantic search overcome the vocabulary mismatch problem that traditional TF-IDF methods face?",
+        "information_need": "User wants to understand the vocabulary mismatch problem in traditional IR and how semantic search with vector embeddings addresses it.",
+        "num_retrieved": 10,
+        "num_relevant": 3,
+        "num_relevant_retrieved": 3,
+        "precision": 0.3,
+        "recall": 1.0,
+        "f1": 0.4615384615384615,
+        "precision_at_5": 0.0,
+        "precision_at_10": 0.3,
+        "recall_at_5": 0.0,
+        "recall_at_10": 1.0,
+        "ndcg_at_5": 0.47476776900380596,
+        "ndcg_at_10": 0.7587857226379989,
+        "average_precision": 0.26190476190476186,
+        "reciprocal_rank": 0.16666666666666666,
+        "sources_searched": [
+          "web",
+          "documents"
+        ],
+        "processing_time_ms": 60571.210861206055,
+        "relevance_judgments": [
+          {
+            "rank": 1,
+            "title": "What Is Semantic Search and How Does It Benefit My Business?",
+            "source_type": "web",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": "# What Is Semantic Search and How Does It Benefit My Business? Learn how semantic search improves search engine results. Semantic search uses two types of AI to understand the context of your search a"
+          },
+          {
+            "rank": 2,
+            "title": "Semantic Search: How It Works, Why It Matters & Real-World ...",
+            "source_type": "web",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": "**Semantic search is an advanced search technology that understands the meaning and intent behind search queries, rather than just matching keywords.** Using artificial intelligence (AI), natural lang"
+          },
+          {
+            "rank": 3,
+            "title": "Semantic Search: How It Works and Why It Matters? | by Vikas Kaushik",
+            "source_type": "web",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": "This is how semantic search works to improve the user experience by providing the most contextually correct results that meet the search intent. But when semantic search came in, search engines starte"
+          },
+          {
+            "rank": 4,
+            "title": "What is Semantic Search? The Definitive Guide - The Couchbase Blog",
+            "source_type": "web",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": "Semantic search is an advanced technique that focuses on understanding the intent and contextual meaning of queries rather than just matching keywords. + **Contextual relevance:** A search system\u2019s ab"
+          },
+          {
+            "rank": 5,
+            "title": "How semantic search improves search accuracy - Dimensions AI",
+            "source_type": "web",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": "Advanced lexical search may also deliver back all documents in which a term is mentioned in two ways: as the exact text string or the text string plus variants thereof. A lexical search will deliver b"
+          },
+          {
+            "rank": 6,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 2.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nWhy We Need Something Beyond TF-IDF\u00a7TF-IDF = lexical overlap\u00a7Vocabulary mismatch is fundamental\u00a7We keep cosine, change representations\nINFO624 - Intellig"
+          },
+          {
+            "rank": 7,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 2.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nThe Vocabulary Mismatch Problem\u00a7Query: \"car insurance\"\u00a7Document: \"auto coverage policies\"\u00a7TF-IDF result:\u00a7Low similarity\u00a7No shared items \u00e0cosine \u2248 0\u00a7Human"
+          },
+          {
+            "rank": 8,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\ntf-idfweighting\u00a7The tf-idfweight of a term is the product of its TF weight and its IDF weight.\n\u00a7Best known weighting scheme in information retrieval\u00a7Alte"
+          },
+          {
+            "rank": 9,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": true,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\nBERT vs. TF-IDFexample\u00a7Doc A: \u201cBest car insurance plans for young drivers\u201d\u00a7Doc B: \u201cAffordable auto coverage policies for students\u201d\u00a7TF-IDF builds vectors "
+          },
+          {
+            "rank": 10,
+            "title": "INFO624-Week3-VectorSpace",
+            "source_type": "documents",
+            "is_relevant": false,
+            "relevance_score": 1.0,
+            "excerpt": "INFO624 Intelligent Search and Language Models\ntf-idf weighting has many variants\nSec. 6.4\nINFO624 - Intelligent Search and Language ModelsWinter 2026 \u2013 Week 5 108"
+          }
+        ]
+      }
+    ],
+    "aggregate": {
+      "mean_precision": 0.32,
+      "mean_recall": 0.8,
+      "mean_f1": 0.4104527051895473,
+      "mean_p_at_5": 0.27999999999999997,
+      "mean_ndcg_at_5": 0.43340991429098114,
+      "mean_ndcg_at_10": 0.6639316840559939,
+      "map": 2.0615873015873016,
+      "mrr": 0.45555555555555555
+    },
+    "per_source_breakdown": {
+      "web": {
+        "count": 5,
+        "percentage": 3.937007874015748
+      },
+      "documents": {
+        "count": 55,
+        "percentage": 43.30708661417323
+      },
+      "academic": {
+        "count": 67,
+        "percentage": 52.75590551181102
+      }
+    }
+  },
+  "layer2_generation_metrics": {
+    "per_query": [
+      {
+        "bert_score": {
+          "precision": 0.7846449017524719,
+          "recall": 0.8046267032623291,
+          "f1": 0.7945101857185364
+        },
+        "bleu": {
+          "bleu_1": 0.15049504950495052,
+          "bleu_2": 0.07532213808241024,
+          "bleu_3": 0.04290011383109847,
+          "bleu_4": 0.02816325853465922
+        },
+        "rouge": {
+          "rouge_1": {
+            "precision": 0.18785578747628084,
+            "recall": 0.5439560439560439,
+            "fmeasure": 0.27926657263751764
+          },
+          "rouge_2": {
+            "precision": 0.051330798479087454,
+            "recall": 0.14917127071823205,
+            "fmeasure": 0.07637906647807638
+          },
+          "rouge_l": {
+            "precision": 0.10815939278937381,
+            "recall": 0.3131868131868132,
+            "fmeasure": 0.1607898448519041
+          }
+        },
+        "perplexity": null
+      },
+      {
+        "bert_score": {
+          "precision": 0.7693649530410767,
+          "recall": 0.8111492991447449,
+          "f1": 0.7897048592567444
+        },
+        "bleu": {
+          "bleu_1": 0.15191740412979352,
+          "bleu_2": 0.09354955685613504,
+          "bleu_3": 0.05916782231946683,
+          "bleu_4": 0.03958318558340161
+        },
+        "rouge": {
+          "rouge_1": {
+            "precision": 0.17548746518105848,
+            "recall": 0.586046511627907,
+            "fmeasure": 0.270096463022508
+          },
+          "rouge_2": {
+            "precision": 0.0697350069735007,
+            "recall": 0.2336448598130841,
+            "fmeasure": 0.10741138560687434
+          },
+          "rouge_l": {
+            "precision": 0.10167130919220056,
+            "recall": 0.3395348837209302,
+            "fmeasure": 0.1564844587352626
+          }
+        },
+        "perplexity": null
+      },
+      {
+        "bert_score": {
+          "precision": 0.8143531680107117,
+          "recall": 0.8259809017181396,
+          "f1": 0.8201257586479187
+        },
+        "bleu": {
+          "bleu_1": 0.2191142191142191,
+          "bleu_2": 0.10612671869872789,
+          "bleu_3": 0.06191863435559177,
+          "bleu_4": 0.038639244388933645
+        },
+        "rouge": {
+          "rouge_1": {
+            "precision": 0.27882599580712786,
+            "recall": 0.5635593220338984,
+            "fmeasure": 0.37307152875175315
+          },
+          "rouge_2": {
+            "precision": 0.0861344537815126,
+            "recall": 0.17446808510638298,
+            "fmeasure": 0.11533052039381153
+          },
+          "rouge_l": {
+            "precision": 0.13417190775681342,
+            "recall": 0.2711864406779661,
+            "fmeasure": 0.17952314165497896
+          }
+        },
+        "perplexity": null
+      },
+      {
+        "bert_score": {
+          "precision": 0.7473465204238892,
+          "recall": 0.7726813554763794,
+          "f1": 0.7598027586936951
+        },
+        "bleu": {
+          "bleu_1": 0.16283524904214555,
+          "bleu_2": 0.053036713488822176,
+          "bleu_3": 0.008147980014267205,
+          "bleu_4": 0.0031951821905416024
+        },
+        "rouge": {
+          "rouge_1": {
+            "precision": 0.24431818181818182,
+            "recall": 0.5286885245901639,
+            "fmeasure": 0.33419689119170987
+          },
+          "rouge_2": {
+            "precision": 0.04743833017077799,
+            "recall": 0.102880658436214,
+            "fmeasure": 0.06493506493506493
+          },
+          "rouge_l": {
+            "precision": 0.0946969696969697,
+            "recall": 0.20491803278688525,
+            "fmeasure": 0.12953367875647667
+          }
+        },
+        "perplexity": null
+      },
+      {
+        "bert_score": {
+          "precision": 0.7854248881340027,
+          "recall": 0.8009011149406433,
+          "f1": 0.7930875420570374
+        },
+        "bleu": {
+          "bleu_1": 0.15992970123022848,
+          "bleu_2": 0.06498842690110276,
+          "bleu_3": 0.03100152043904996,
+          "bleu_4": 0.018013190275401214
+        },
+        "rouge": {
+          "rouge_1": {
+            "precision": 0.19597989949748743,
+            "recall": 0.4624505928853755,
+            "fmeasure": 0.2752941176470588
+          },
+          "rouge_2": {
+            "precision": 0.03691275167785235,
+            "recall": 0.0873015873015873,
+            "fmeasure": 0.05188679245283019
+          },
+          "rouge_l": {
+            "precision": 0.08710217755443886,
+            "recall": 0.20553359683794467,
+            "fmeasure": 0.12235294117647058
+          }
+        },
+        "perplexity": null
+      }
+    ],
+    "aggregate": {
+      "mean_bert_f1": 0.7914462208747863,
+      "mean_bert_precision": 0.7802268862724304,
+      "mean_bert_recall": 0.8030678749084472,
+      "mean_bleu_1": 0.16885832460426742,
+      "mean_bleu_2": 0.07860471080543963,
+      "mean_bleu_4": 0.02551881219458746,
+      "mean_rouge_1_f": 0.30638511465010954,
+      "mean_rouge_2_f": 0.08318856597333148,
+      "mean_rouge_l_f": 0.14973681303501857
+    }
+  },
+  "layer3_google_baseline": {
+    "per_query": [
+      {
+        "query": "How does combining BM25 with dense retrieval in a hybrid search system improve RAG pipeline accuracy compared to using either method alone?",
+        "google_results_count": 10,
+        "our_results_count": 10,
+        "source_overlap": {
+          "domain_overlap": 0.125,
+          "title_overlap": 0.0,
+          "content_overlap": 0.07441016333938294
+        },
+        "answer_comparison": {
+          "bert_score_vs_google": 0.8001901507377625,
+          "coverage_score": 0.272108843537415
+        },
+        "agentic_advantages": {
+          "has_academic": true,
+          "has_vector_store": true,
+          "has_citations": true,
+          "has_synthesized_answer": true
+        }
+      },
+      {
+        "query": "Compare the effectiveness of query decomposition vs query expansion for handling complex multi-faceted information needs",
+        "google_results_count": 8,
+        "our_results_count": 10,
+        "source_overlap": {
+          "domain_overlap": 0.0,
+          "title_overlap": 0.0,
+          "content_overlap": 0.06402439024390244
+        },
+        "answer_comparison": {
+          "bert_score_vs_google": 0.7683599591255188,
+          "coverage_score": 0.29914529914529914
+        },
+        "agentic_advantages": {
+          "has_academic": false,
+          "has_vector_store": true,
+          "has_citations": true,
+          "has_synthesized_answer": true
+        }
+      },
+      {
+        "query": "Explain how BERT-based cross-encoders re-rank search results and why they outperform bi-encoder approaches for passage retrieval",
+        "google_results_count": 8,
+        "our_results_count": 10,
+        "source_overlap": {
+          "domain_overlap": 0.2,
+          "title_overlap": 0.0,
+          "content_overlap": 0.07397959183673469
+        },
+        "answer_comparison": {
+          "bert_score_vs_google": 0.8036847710609436,
+          "coverage_score": 0.21100917431192662
+        },
+        "agentic_advantages": {
+          "has_academic": true,
+          "has_vector_store": true,
+          "has_citations": true,
+          "has_synthesized_answer": true
+        }
+      },
+      {
+        "query": "What are the key architectural differences between Agentic RAG and standard RAG, and how does self-reflection improve answer quality?",
+        "google_results_count": 7,
+        "our_results_count": 10,
+        "source_overlap": {
+          "domain_overlap": 0.0,
+          "title_overlap": 0.0,
+          "content_overlap": 0.0273972602739726
+        },
+        "answer_comparison": {
+          "bert_score_vs_google": 0.769362211227417,
+          "coverage_score": 0.22807017543859648
+        },
+        "agentic_advantages": {
+          "has_academic": false,
+          "has_vector_store": true,
+          "has_citations": true,
+          "has_synthesized_answer": true
+        }
+      },
+      {
+        "query": "How do vector embeddings and semantic search overcome the vocabulary mismatch problem that traditional TF-IDF methods face?",
+        "google_results_count": 8,
+        "our_results_count": 10,
+        "source_overlap": {
+          "domain_overlap": 0.0,
+          "title_overlap": 0.0,
+          "content_overlap": 0.07251908396946564
+        },
+        "answer_comparison": {
+          "bert_score_vs_google": 0.7791836261749268,
+          "coverage_score": 0.30434782608695654
+        },
+        "agentic_advantages": {
+          "has_academic": false,
+          "has_vector_store": true,
+          "has_citations": true,
+          "has_synthesized_answer": true
+        }
+      }
+    ],
+    "aggregate": {
+      "mean_domain_overlap": 0.065,
+      "mean_content_overlap": 0.062466097932691665,
+      "mean_bert_vs_google": 0.7841561436653137
+    }
+  },
+  "layer4_judge": {
+    "per_query": [
+      {
+        "scores": {
+          "relevance": 0.8,
+          "completeness": 0.7,
+          "faithfulness": 0.9,
+          "citation_quality": 0.8,
+          "coherence": 0.9,
+          "factual_accuracy": 0.9
+        },
+        "overall_score": 0.85,
+        "hallucination_check": {
+          "total_claims": 17,
+          "supported_claims": 14,
+          "unsupported_claims": 3,
+          "hallucination_rate": 0.176,
+          "unsupported_details": [
+            "Hybrid search systems consistently outperform either method alone, with improvements of 5-15% on standard benchmarks like MS MARCO and Natural Questions.",
+            "The dense component provides recall for semantically related documents, while BM25 provides precision for keyword-specific queries, making the combined system more robust across diverse query types.",
+            "Research has shown that hybrid approaches consistently outperform either method alone."
+          ]
+        },
+        "strengths": [
+          "The answer provides a clear explanation of the benefits of combining BM25 and dense retrieval in a hybrid search system.",
+          "The answer cites relevant sources to support its claims.",
+          "The answer is well-organized and clear."
+        ],
+        "weaknesses": [
+          "The answer does not fully address the query and information need.",
+          "The answer lacks some important details about the implementation of hybrid search systems.",
+          "The answer contains some unsupported claims."
+        ],
+        "reasoning": "The answer is generally strong, but it could be improved by providing more complete coverage of the query and information need, and by ensuring that all claims are supported by the retrieved sources."
+      },
+      {
+        "scores": {
+          "relevance": 0.8,
+          "completeness": 0.7,
+          "faithfulness": 0.9,
+          "citation_quality": 0.8,
+          "coherence": 0.9,
+          "factual_accuracy": 0.9
+        },
+        "overall_score": 0.85,
+        "hallucination_check": {
+          "total_claims": 17,
+          "supported_claims": 14,
+          "unsupported_claims": 3,
+          "hallucination_rate": 0.176,
+          "unsupported_details": [
+            "Query decomposition is generally more effective for complex, multi-part questions because it preserves the structure of the information need.",
+            "Modern agentic search systems often combine both: decomposing complex queries into sub-queries and then expanding each sub-query for better recall.",
+            "The key tradeoff is that decomposition adds latency (multiple retrievals) while expansion can introduce topic drift if not carefully controlled."
+          ]
+        },
+        "strengths": [
+          "Provides a clear and concise overview of query decomposition and query expansion.",
+          "Cites relevant sources to support claims.",
+          "Well-organized and logically structured."
+        ],
+        "weaknesses": [
+          "Does not fully address the query and information need.",
+          "Some claims are not fully supported by the retrieved sources.",
+          "Lacks depth and detail in certain areas."
+        ],
+        "reasoning": "The answer provides a good overview of query decomposition and query expansion, but could benefit from more depth and detail in certain areas. The claims are generally supported by the retrieved sources, but some are not fully supported. The answer is well-organized and logically structured, but could be improved with more attention to relevance and completeness."
+      },
+      {
+        "scores": {
+          "relevance": 0.8,
+          "completeness": 0.7,
+          "faithfulness": 0.9,
+          "citation_quality": 0.8,
+          "coherence": 0.9,
+          "factual_accuracy": 0.9
+        },
+        "overall_score": 0.85,
+        "hallucination_check": {
+          "total_claims": 15,
+          "supported_claims": 12,
+          "unsupported_claims": 3,
+          "hallucination_rate": 0.2,
+          "unsupported_details": [
+            "BERT-based cross-encoders can learn cross-lingual representations, allowing them to be used for multilingual search.",
+            "This can be mitigated by using techniques such as knowledge distillation, which allows the model to be trained on a smaller dataset while still capturing the key features of the original model.",
+            "However, they can be computationally expensive to train and deploy, and may require additional techniques such as knowledge distillation to achieve scalability."
+          ]
+        },
+        "strengths": [
+          "The answer provides a clear explanation of the difference between bi-encoder and cross-encoder approaches.",
+          "It highlights the advantages of cross-encoders, including their ability to capture complex relationships between the query and document.",
+          "The answer is well-organized and easy to follow."
+        ],
+        "weaknesses": [
+          "The answer does not fully address the query and information need, as it does not provide a detailed explanation of the trade-offs between bi-encoder and cross-encoder approaches.",
+          "Some claims are not fully supported by the retrieved sources.",
+          "The answer could benefit from more concrete examples and illustrations to make the concepts more accessible to readers."
+        ],
+        "reasoning": "The answer provides a good overview of the topic, but could be improved by providing more detailed explanations and supporting evidence. The hallucination rate is relatively high, indicating that some claims are not fully supported by the sources."
+      },
+      {
+        "scores": {
+          "relevance": 0.8,
+          "completeness": 0.7,
+          "faithfulness": 0.6,
+          "citation_quality": 0.5,
+          "coherence": 0.8,
+          "factual_accuracy": 0.9
+        },
+        "overall_score": 0.75,
+        "hallucination_check": {
+          "total_claims": 15,
+          "supported_claims": 10,
+          "unsupported_claims": 5,
+          "hallucination_rate": 0.33,
+          "unsupported_details": [
+            "Agentic RAG offers several benefits over standard RAG systems, including improved retrieval precision and relevance.",
+            "Agentic RAG's modular pipeline allows for iterative sub-query decomposition guided by keyphrase extraction, contextual acronym resolution, and cross-encoder-based context re-ranking.",
+            "Agentic RAG can adapt and improve its performance over time, leading to more accurate and relevant responses."
+          ]
+        },
+        "strengths": [
+          "The answer provides a clear and concise overview of the key architectural differences between Agentic RAG and standard RAG.",
+          "The answer highlights the benefits of Agentic RAG, including improved retrieval precision and relevance.",
+          "The answer provides a brief explanation of the self-reflection mechanism in Agentic RAG."
+        ],
+        "weaknesses": [
+          "The answer lacks a clear and detailed explanation of the self-reflection mechanism in Agentic RAG.",
+          "The answer does not provide a comprehensive comparison of Agentic RAG and standard RAG.",
+          "The answer contains some unsupported claims, which are listed in the hallucination check."
+        ],
+        "reasoning": "The answer provides a good overview of the key architectural differences between Agentic RAG and standard RAG, but lacks a clear and detailed explanation of the self-reflection mechanism. The answer also contains some unsupported claims, which are listed in the hallucination check. Overall, the answer is relevant and coherent, but lacks completeness and faithfulness."
+      },
+      {
+        "scores": {
+          "relevance": 0.8,
+          "completeness": 0.7,
+          "faithfulness": 0.9,
+          "citation_quality": 0.8,
+          "coherence": 0.9,
+          "factual_accuracy": 0.9
+        },
+        "overall_score": 0.85,
+        "hallucination_check": {
+          "total_claims": 17,
+          "supported_claims": 14,
+          "unsupported_claims": 3,
+          "hallucination_rate": 0.176,
+          "unsupported_details": [
+            "Subword TF-IDF (STF-IDF) is a variant of TF-IDF that uses subword tokenization to improve accuracy in multilingual search.",
+            "The hypergeometric test has been shown to perform comparably to TF-IDF on standard text analysis tasks.",
+            "The relationship between the hypergeometric test and TF-IDF remains to be fully understood."
+          ]
+        },
+        "strengths": [
+          "Provides a clear explanation of the vocabulary mismatch problem and its limitations in traditional IR methods.",
+          "Effectively uses retrieved sources to support claims and provide context.",
+          "Cites relevant sources and attributes them properly."
+        ],
+        "weaknesses": [
+          "Does not fully address the query and information need, as it does not provide a comprehensive overview of vector embeddings and semantic search.",
+          "Includes unsupported claims and details, which may be considered hallucinations.",
+          "Could benefit from a more detailed explanation of the tradeoffs between dense retrieval and lexical methods."
+        ],
+        "reasoning": "The answer provides a good overview of the vocabulary mismatch problem and its limitations in traditional IR methods. However, it falls short in terms of completeness, as it does not fully address the query and information need. Additionally, it includes unsupported claims and details, which may be considered hallucinations. Overall, the answer is well-organized and clear, but could benefit from a more detailed explanation of the tradeoffs between dense retrieval and lexical methods."
+      }
+    ],
+    "aggregate": {
+      "mean_relevance": 0.8,
+      "mean_completeness": 0.7,
+      "mean_faithfulness": 0.8400000000000001,
+      "mean_citation_quality": 0.74,
+      "mean_coherence": 0.8800000000000001,
+      "mean_factual_accuracy": 0.9,
+      "mean_overall": 0.8299999999999998,
+      "mean_hallucination_rate": 0.2116,
+      "overall_hallucination_rate": 0.20987654320987653
+    }
+  },
+  "layer5_ragas": null,
+  "layer6_robustness": null
+}

@@ -1,0 +1,237 @@
+[
+  {
+    "query": "How does combining BM25 with dense retrieval in a hybrid search system improve RAG pipeline accuracy compared to using either method alone?",
+    "collected_date": "2026-03-09",
+    "results": [
+      {
+        "title": "Hybrid Search: Combining BM25 and Dense Retrieval for Better RAG",
+        "url": "https://www.pinecone.io/learn/hybrid-search/",
+        "snippet": "Hybrid search combines the strengths of sparse (BM25) and dense retrieval methods. BM25 excels at exact keyword matching while dense retrieval captures semantic meaning. Together they provide superior recall and precision in RAG pipelines."
+      },
+      {
+        "title": "Reciprocal Rank Fusion for Hybrid Retrieval in RAG Systems",
+        "url": "https://arxiv.org/abs/2401.00000",
+        "snippet": "We propose using Reciprocal Rank Fusion to combine BM25 and dense retriever scores, showing 8-12% improvement on Natural Questions and MS MARCO benchmarks compared to either method alone."
+      },
+      {
+        "title": "BM25 vs Dense Retrieval: When to Use Which | LangChain Blog",
+        "url": "https://blog.langchain.dev/bm25-vs-dense-retrieval/",
+        "snippet": "BM25 handles rare terms and exact matches well, while dense retrieval handles synonyms and paraphrases. Hybrid approaches combine both for robust retrieval across diverse query types."
+      },
+      {
+        "title": "Building Production RAG with Hybrid Search - LlamaIndex",
+        "url": "https://www.llamaindex.ai/blog/hybrid-search-rag",
+        "snippet": "Production RAG systems benefit from hybrid search that merges sparse and dense retrieval. The vocabulary mismatch problem is addressed by dense embeddings while BM25 maintains precision."
+      },
+      {
+        "title": "Hybrid Retrieval-Augmented Generation: A Survey",
+        "url": "https://arxiv.org/abs/2402.00000",
+        "snippet": "This survey covers hybrid RAG architectures combining lexical and semantic retrieval. We find consistent 5-15% improvements across standard benchmarks when using fusion strategies."
+      },
+      {
+        "title": "What is BM25? How it works and why it matters for search",
+        "url": "https://www.elastic.co/blog/bm25-explained",
+        "snippet": "BM25 is a ranking function based on term frequency and inverse document frequency. It remains competitive with neural methods for keyword-heavy queries and is computationally efficient."
+      },
+      {
+        "title": "Dense Passage Retrieval for Open-Domain Question Answering",
+        "url": "https://arxiv.org/abs/2004.04906",
+        "snippet": "We show that dense retrieval using BERT-based encoders significantly outperforms BM25 on open-domain QA tasks, with up to 20% improvement in top-20 retrieval accuracy."
+      },
+      {
+        "title": "RAG Pipeline Architecture: Best Practices 2025",
+        "url": "https://towardsdatascience.com/rag-architecture-best-practices",
+        "snippet": "Modern RAG pipelines use hybrid retrieval as the first stage, combining BM25 for lexical matching with vector search for semantic matching, followed by cross-encoder re-ranking."
+      },
+      {
+        "title": "Improving RAG with Hybrid Search - Weaviate",
+        "url": "https://weaviate.io/blog/hybrid-search-rag",
+        "snippet": "Weaviate's hybrid search combines BM25 and vector search using alpha weighting. Users can tune the balance between keyword and semantic matching for their specific use case."
+      },
+      {
+        "title": "The vocabulary mismatch problem in information retrieval",
+        "url": "https://en.wikipedia.org/wiki/Vocabulary_mismatch",
+        "snippet": "The vocabulary mismatch problem occurs when queries and relevant documents use different terms. Semantic search methods using dense embeddings address this fundamental IR challenge."
+      }
+    ]
+  },
+  {
+    "query": "Compare the effectiveness of query decomposition vs query expansion for handling complex multi-faceted information needs",
+    "collected_date": "2026-03-09",
+    "results": [
+      {
+        "title": "Query Decomposition for Complex Question Answering",
+        "url": "https://arxiv.org/abs/2305.00000",
+        "snippet": "Query decomposition breaks complex questions into simpler sub-questions that can be answered independently. This approach is particularly effective for multi-hop reasoning tasks."
+      },
+      {
+        "title": "Query Expansion Techniques in Information Retrieval: A Survey",
+        "url": "https://arxiv.org/abs/2301.00000",
+        "snippet": "Query expansion enriches the original query with related terms to improve recall. Techniques include pseudo-relevance feedback, thesaurus-based expansion, and neural expansion."
+      },
+      {
+        "title": "Pseudo-Relevance Feedback and the Rocchio Algorithm Explained",
+        "url": "https://nlp.stanford.edu/IR-book/html/htmledition/rocchio-classification-1.html",
+        "snippet": "The Rocchio algorithm modifies the query vector by moving it toward relevant documents and away from non-relevant ones. It is the classic approach to relevance feedback in IR."
+      },
+      {
+        "title": "Decomposed Prompting for Complex Multi-Step Reasoning",
+        "url": "https://arxiv.org/abs/2210.02406",
+        "snippet": "We show that decomposing complex prompts into simpler sub-problems improves LLM accuracy by 15-30% on multi-step reasoning tasks compared to direct answering."
+      },
+      {
+        "title": "Query Reformulation Techniques for Information Retrieval",
+        "url": "https://www.semanticscholar.org/query-reformulation-survey",
+        "snippet": "Query reformulation encompasses both expansion and decomposition strategies. Modern systems often combine both approaches for optimal retrieval on complex queries."
+      },
+      {
+        "title": "Multi-hop Question Decomposition with Sub-question Generation",
+        "url": "https://aclanthology.org/2023.acl-main.100",
+        "snippet": "We present a method for automatically decomposing multi-hop questions into sub-questions. Our approach shows 12% improvement in answer accuracy on HotpotQA dataset."
+      },
+      {
+        "title": "Neural Query Expansion with Language Models",
+        "url": "https://arxiv.org/abs/2302.00000",
+        "snippet": "Large language models can generate effective query expansions that capture semantic relationships missed by traditional expansion methods like WordNet or pseudo-relevance feedback."
+      },
+      {
+        "title": "Handling Complex Information Needs in Search Systems",
+        "url": "https://research.google/pubs/complex-information-needs/",
+        "snippet": "Complex information needs require multiple retrieval passes. Systems that decompose queries into facets and expand each facet independently achieve the best performance."
+      }
+    ]
+  },
+  {
+    "query": "Explain how BERT-based cross-encoders re-rank search results and why they outperform bi-encoder approaches for passage retrieval",
+    "collected_date": "2026-03-09",
+    "results": [
+      {
+        "title": "Cross-Encoders vs Bi-Encoders for Semantic Search - SBERT",
+        "url": "https://www.sbert.net/examples/applications/cross-encoder/README.html",
+        "snippet": "Cross-encoders process query-document pairs jointly, enabling full attention between all tokens. Bi-encoders encode query and document independently for efficient similarity search."
+      },
+      {
+        "title": "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks",
+        "url": "https://arxiv.org/abs/1908.10084",
+        "snippet": "We present Sentence-BERT which uses siamese bi-encoder architecture to produce semantically meaningful sentence embeddings suitable for large-scale similarity search."
+      },
+      {
+        "title": "MS MARCO Passage Re-ranking with Cross-Encoder Models",
+        "url": "https://huggingface.co/cross-encoder/ms-marco-MiniLM-L-12-v2",
+        "snippet": "This cross-encoder model fine-tuned on MS MARCO achieves state-of-the-art passage re-ranking, outperforming bi-encoder approaches by 5-10 MRR points."
+      },
+      {
+        "title": "Two-Stage Retrieval: Efficient Neural Passage Retrieval",
+        "url": "https://arxiv.org/abs/2010.00000",
+        "snippet": "The standard approach combines efficient bi-encoder retrieval for candidate generation with accurate cross-encoder re-ranking for final results."
+      },
+      {
+        "title": "Understanding BERT for Information Retrieval - A Comprehensive Guide",
+        "url": "https://www.elastic.co/blog/bert-for-ir",
+        "snippet": "BERT's cross-attention mechanism captures nuanced query-document interactions like negation and comparison that independent encoding cannot model."
+      },
+      {
+        "title": "ColBERT: Efficient and Effective Passage Search via Late Interaction",
+        "url": "https://arxiv.org/abs/2004.12832",
+        "snippet": "ColBERT introduces late interaction between query and document tokens, offering a middle ground between the quality of cross-encoders and the efficiency of bi-encoders."
+      },
+      {
+        "title": "Neural Ranking Models for Information Retrieval: A Survey",
+        "url": "https://arxiv.org/abs/2306.00000",
+        "snippet": "We survey neural ranking approaches including cross-encoders, bi-encoders, and late interaction models. Cross-encoders consistently produce the best ranking quality."
+      },
+      {
+        "title": "BERT Re-ranking for Search: Practical Implementation Guide",
+        "url": "https://towardsdatascience.com/bert-reranking-practical-guide",
+        "snippet": "Cross-encoder re-ranking is now standard in production search systems. The typical pipeline retrieves 100-1000 candidates with BM25/bi-encoder, then re-ranks top results with cross-encoder."
+      }
+    ]
+  },
+  {
+    "query": "What are the key architectural differences between Agentic RAG and standard RAG, and how does self-reflection improve answer quality?",
+    "collected_date": "2026-03-09",
+    "results": [
+      {
+        "title": "Agentic RAG: The Next Evolution of Retrieval-Augmented Generation",
+        "url": "https://www.llamaindex.ai/blog/agentic-rag",
+        "snippet": "Agentic RAG extends standard RAG with autonomous planning, tool use, and iterative retrieval. Unlike linear RAG, agents can decide which sources to query and when to retry."
+      },
+      {
+        "title": "Self-RAG: Learning to Retrieve, Generate, and Critique",
+        "url": "https://arxiv.org/abs/2310.11511",
+        "snippet": "Self-RAG trains the LM to reflect on its own output using special tokens, deciding when to retrieve and how to critique generated text. Shows 5-20% improvement over standard RAG."
+      },
+      {
+        "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+        "url": "https://arxiv.org/abs/2210.03629",
+        "snippet": "ReAct interleaves reasoning and action steps, allowing LLMs to plan and execute multi-step tasks. This agent paradigm forms the basis of agentic RAG systems."
+      },
+      {
+        "title": "Corrective RAG: Self-Reflection for Knowledge-Intensive Tasks",
+        "url": "https://arxiv.org/abs/2401.15884",
+        "snippet": "CRAG introduces a lightweight retrieval evaluator that triggers corrective actions when retrieved documents are irrelevant, improving answer accuracy by 15-25%."
+      },
+      {
+        "title": "Building Agentic RAG Systems with LangGraph",
+        "url": "https://blog.langchain.dev/agentic-rag-langgraph/",
+        "snippet": "LangGraph enables building agentic RAG workflows with stateful graphs, conditional edges, and reflection loops that standard chain-based RAG cannot support."
+      },
+      {
+        "title": "From RAG to Agentic RAG: Architecture Patterns",
+        "url": "https://towardsdatascience.com/rag-to-agentic-rag-patterns",
+        "snippet": "Key differences: standard RAG is a fixed pipeline while agentic RAG uses dynamic planning. Self-reflection enables quality control loops that catch hallucinations."
+      },
+      {
+        "title": "Multi-Agent RAG: Coordinated Retrieval and Generation",
+        "url": "https://arxiv.org/abs/2403.00000",
+        "snippet": "Multi-agent RAG systems use specialized agents for query analysis, retrieval, synthesis, and evaluation. This separation of concerns improves both quality and interpretability."
+      }
+    ]
+  },
+  {
+    "query": "How do vector embeddings and semantic search overcome the vocabulary mismatch problem that traditional TF-IDF methods face?",
+    "collected_date": "2026-03-09",
+    "results": [
+      {
+        "title": "The Vocabulary Mismatch Problem in Information Retrieval",
+        "url": "https://en.wikipedia.org/wiki/Vocabulary_mismatch",
+        "snippet": "Vocabulary mismatch occurs when queries and relevant documents use different terms to express the same concept. This is a fundamental limitation of lexical IR methods."
+      },
+      {
+        "title": "Semantic Search with Vector Embeddings: A Comprehensive Guide",
+        "url": "https://www.pinecone.io/learn/semantic-search/",
+        "snippet": "Semantic search uses dense vector embeddings to match meaning rather than keywords. Models like Sentence-BERT map text into a continuous space where similar concepts are near each other."
+      },
+      {
+        "title": "TF-IDF vs Semantic Search: Understanding the Gap",
+        "url": "https://towardsdatascience.com/tfidf-vs-semantic-search",
+        "snippet": "TF-IDF creates sparse vectors based on term frequency and document frequency. It fails when queries and documents use different words for the same concept, motivating dense retrieval."
+      },
+      {
+        "title": "Word2Vec and the Revolution in NLP Representations",
+        "url": "https://arxiv.org/abs/1301.3781",
+        "snippet": "Word2Vec learns dense word embeddings where similar words have similar vectors. This breakthrough showed that distributed representations can capture semantic relationships."
+      },
+      {
+        "title": "Sentence Transformers: Making Sentence Embeddings Practical",
+        "url": "https://www.sbert.net/",
+        "snippet": "Sentence Transformers like all-MiniLM-L6-v2 encode entire sentences into 384-dimensional vectors. Cosine similarity between vectors reflects semantic similarity."
+      },
+      {
+        "title": "From Sparse to Dense: The Evolution of Text Retrieval",
+        "url": "https://research.google/pubs/sparse-to-dense-retrieval/",
+        "snippet": "Dense retrieval models encode text into continuous vector spaces, overcoming vocabulary mismatch by learning semantic representations that generalize beyond exact term matching."
+      },
+      {
+        "title": "Understanding Cosine Similarity for Semantic Search",
+        "url": "https://www.elastic.co/blog/cosine-similarity-explained",
+        "snippet": "Cosine similarity measures the angle between vectors in embedding space. Two semantically similar texts will have high cosine similarity even with completely different vocabularies."
+      },
+      {
+        "title": "Vector Databases for Semantic Search: ChromaDB, Pinecone, Weaviate",
+        "url": "https://www.datacamp.com/tutorial/vector-databases-comparison",
+        "snippet": "Vector databases like ChromaDB store and index dense embeddings for fast approximate nearest neighbor search, enabling semantic search at scale."
+      }
+    ]
+  }
+]

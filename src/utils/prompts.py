@@ -2,7 +2,6 @@
 LLM Prompts for Agentic Search.
 
 This module contains all prompts used by the agent nodes.
-Centralizing prompts makes them easier to maintain and tune.
 """
 
 PROMPTS = {

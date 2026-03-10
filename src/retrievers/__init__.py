@@ -1,6 +1,5 @@
-"""
-Retrievers module for Agentic Search.
-"""
+# Retrievers module for Agentic Search.
+
 
 from src.retrievers.web_search import TavilyRetriever, get_tavily_retriever
 from src.retrievers.vector_store import VectorStoreRetriever, get_vector_retriever

@@ -18,18 +18,18 @@ load_dotenv()
 class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
 
-    # LLM Provider Selection
+    # LLM used
     llm_provider: Literal["groq", "openai"] = Field(
         default="groq", description="LLM provider to use (groq or openai)"
     )
 
-    # Groq Configuration (FREE!)
+    # Groq Configuration(Free)
     groq_api_key: str = Field(default="", description="Groq API key")
     groq_model: str = Field(
         default="llama-3.1-8b-instant", description="Groq model to use"
     )
 
-    # OpenAI Configuration (paid, optional)
+    # OpenAI Configuration (paid)
     openai_api_key: str = Field(default="", description="OpenAI API key")
     openai_model: str = Field(default="gpt-4o", description="OpenAI model to use")
     openai_embedding_model: str = Field(
