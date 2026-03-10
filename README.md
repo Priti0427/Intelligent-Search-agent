@@ -1,10 +1,8 @@
 # Intelligent Agentic Search
 
-**Course:** INFO 624 - Intelligent Search and Language Models | Drexel University
-
 ---
 
-An intelligent multi-source search agent built with LangGraph and LangChain for INFO 624: Intelligent Search and Language Models.
+An intelligent multi-source search agent built with LangGraph and LangChain
 
 ## Project Overview
 
