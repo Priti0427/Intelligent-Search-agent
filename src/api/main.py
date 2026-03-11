@@ -35,10 +35,7 @@ app = FastAPI(
     - **Answer Synthesis**: Generates comprehensive answers with citations
     - **Self-Reflection**: Evaluates and improves answer quality
     
-    ## Course Alignment
-    
-    This project demonstrates concepts from INFO 624: Intelligent Search and Language Models,
-    including vector space models, neural language models, relevance feedback, and RAG systems.
+
     """,
     version="0.1.0",
     docs_url="/docs",
