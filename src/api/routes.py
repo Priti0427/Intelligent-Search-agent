@@ -139,8 +139,10 @@ async def search(request: SearchRequest):
         
         processing_time = (time.time() - start_time) * 1000
         
-        # Extract answer
-        answer = result.get("final_answer") or result.get("draft_answer", "No answer generated.")
+        # Extract answer (treat empty strings as missing — .get default only applies when key is absent)
+        final = (result.get("final_answer") or "").strip()
+        draft = (result.get("draft_answer") or "").strip()
+        answer = final or draft or "No answer generated."
         
         # Extract citations
         citations = []

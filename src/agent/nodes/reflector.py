@@ -94,14 +94,24 @@ async def reflect_node(state: SearchState) -> dict[str, Any]:
         # Get LLM response
         response = await llm.ainvoke(prompt)
         
-        # Parse JSON response
+        # Parse JSON response — LLMs sometimes emit trailing commentary after the JSON
         content = response.content
         if "```json" in content:
             content = content.split("```json")[1].split("```")[0]
         elif "```" in content:
             content = content.split("```")[1].split("```")[0]
         
-        reflection = json.loads(content.strip())
+        content = content.strip()
+        try:
+            reflection = json.loads(content)
+        except json.JSONDecodeError:
+            # Try to extract just the first JSON object
+            import re
+            match = re.search(r'\{[\s\S]*\}', content)
+            if match:
+                reflection = json.loads(match.group())
+            else:
+                raise
         
         # Extract scores
         scores = reflection.get("scores", {})

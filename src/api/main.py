@@ -5,6 +5,7 @@ This is the main entry point for the API server.
 """
 
 import logging
+import os
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -89,6 +90,10 @@ async def serve_js():
 @app.on_event("startup")
 async def startup_event():
     """Initialize services on startup."""
+    # Clear proxy env vars that can be inherited from IDE/shell and break outgoing requests
+    for var in ("http_proxy", "https_proxy", "HTTP_PROXY", "HTTPS_PROXY", "ALL_PROXY", "all_proxy"):
+        os.environ.pop(var, None)
+    
     logger.info("Starting Agentic Search API...")
     
     settings = get_settings()

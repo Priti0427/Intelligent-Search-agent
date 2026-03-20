@@ -103,6 +103,11 @@ async def route_queries_node(state: SearchState) -> dict[str, Any]:
             
             logger.info(f"  Query {i+1} -> {sources}")
         
+        # Ensure at least one sub-query includes web search as a reliable fallback
+        if not any("web" in sq["sources"] for sq in routed_queries):
+            routed_queries[0]["sources"] = list(set(routed_queries[0]["sources"]) | {"web"})
+            logger.info("  Added web source to first sub-query as fallback")
+        
         return {"sub_queries": routed_queries}
         
     except json.JSONDecodeError as e:
