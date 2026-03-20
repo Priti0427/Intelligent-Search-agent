@@ -35,7 +35,7 @@ class TextChunker:
     - paragraph: Split on paragraph boundaries
     - semantic: Split on semantic boundaries (headers, sections)
     
-    This demonstrates text preprocessing concepts from Week 2 of the course.
+
     """
     
     def __init__(

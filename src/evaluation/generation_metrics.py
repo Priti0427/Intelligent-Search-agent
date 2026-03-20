@@ -10,7 +10,6 @@ This module evaluates the quality of generated answers using:
 These metrics compare the pipeline's synthesized answer against
 expert-written reference answers (gold standard).
 
-Course alignment: INFO 624 Week 8 - Evaluation Metrics for AI-Enhanced IR Systems
 """
 
 import logging
