@@ -128,41 +128,53 @@ python -m uvicorn src.api.main:app --host 0.0.0.0 --port 8000
 ```
 agentic-search/
 ├── src/
-│   ├── agent/              # LangGraph agent definition
-│   │   ├── graph.py        # Main workflow
-│   │   ├── state.py        # State schema
-│   │   └── nodes/          # Individual nodes
+│   ├── agent/                # LangGraph agent definition
+│   │   ├── graph.py          # Main workflow
+│   │   ├── state.py          # State schema
+│   │   └── nodes/            # Individual nodes
 │   │       ├── query_analyzer.py
 │   │       ├── query_decomposer.py
 │   │       ├── router.py
 │   │       ├── retriever.py
 │   │       ├── synthesizer.py
 │   │       └── reflector.py
-│   ├── retrievers/         # Data source integrations
-│   │   ├── web_search.py   # Tavily integration
-│   │   ├── vector_store.py # ChromaDB integration
-│   │   └── arxiv_search.py # arXiv integration
-│   ├── ingestion/          # Document processing
+│   ├── retrievers/           # Data source integrations
+│   │   ├── web_search.py     # Tavily integration
+│   │   ├── vector_store.py   # ChromaDB integration
+│   │   └── arxiv_search.py   # arXiv integration
+│   ├── ingestion/            # Document processing
 │   │   ├── document_loader.py
 │   │   ├── chunker.py
 │   │   └── embedder.py
-│   ├── api/                # FastAPI backend
+│   ├── evaluation/           # Comprehensive evaluation framework
+│   │   ├── evaluator.py      # Orchestrates all evaluation layers
+│   │   ├── metrics.py        # IR metrics (Precision, Recall, nDCG, MAP, MRR)
+│   │   ├── generation_metrics.py  # BERTScore, BLEU, ROUGE
+│   │   ├── google_baseline.py     # Google baseline comparison
+│   │   ├── judge_agent.py    # LLM-as-Judge evaluation
+│   │   ├── ragas_evaluation.py    # RAGAS (Faithfulness, Context Precision/Recall)
+│   │   ├── robustness.py     # Robustness & stress testing
+│   │   └── test_cases.py     # Evaluation test cases
+│   ├── api/                  # FastAPI backend
 │   │   ├── main.py
 │   │   ├── routes.py
 │   │   └── schemas.py
-│   └── utils/              # Configuration and prompts
+│   └── utils/                # Configuration and prompts
 │       ├── config.py
 │       ├── llm.py
 │       └── prompts.py
-├── frontend/               # Chat interface
+├── frontend/                 # Chat interface
 │   ├── index.html
 │   ├── styles.css
 │   └── app.js
+├── notebooks/
+│   ├── 01_exploration.ipynb  # Component exploration
+│   ├── 02_evaluation.ipynb   # Full evaluation runs
+│   └── 03_demo.ipynb         # End-to-end demo
 ├── data/
-│   ├── documents/          # Upload your documents here
-│   └── chroma_db/          # Vector database storage
-├── notebooks/              # Jupyter notebooks
-└── tests/                  # Unit tests
+│   ├── documents/            # Upload your documents here
+│   └── chroma_db/            # Vector database storage
+└── tests/                    # Unit tests
 ```
 
 ## Usage
@@ -212,20 +224,50 @@ Supported formats: PDF, DOCX, TXT, Markdown
 | `/api/search/stream` | POST | Streaming search with updates |
 | `/api/ingest` | POST | Ingest documents into vector DB |
 | `/api/stats` | GET | System statistics |
+| `/api/evaluation/run` | POST | Run formal IR evaluation on test cases |
+| `/api/evaluation/test-cases` | GET | List available evaluation test cases |
+| `/api/evaluation/metrics-info` | GET | Metric definitions and formulas |
 
-## Evaluation Metrics
+## Evaluation Framework
 
-### Quality Metrics (Automated)
-- Relevance Score (0-1)
-- Completeness Score (0-1)
-- Accuracy Score (0-1)
-- Citation Quality Score (0-1)
-- Clarity Score (0-1)
+The project includes a six-layer evaluation framework that goes well beyond basic accuracy checks.
 
-### System Metrics
-- Processing time per query
-- Number of reflection iterations
-- Sources searched per query
+### Layer 1: IR Retrieval Metrics
+Classical information retrieval measures computed per query and averaged across the test set:
+- **Precision / Recall / F1** — fraction of retrieved results that are relevant, and vice versa
+- **P@5, P@10** — precision within the top-k results
+- **nDCG@5, nDCG@10** — ranking quality via Normalized Discounted Cumulative Gain
+- **MAP** — Mean Average Precision across all queries
+- **MRR** — Mean Reciprocal Rank of the first relevant result
+
+### Layer 2: Text Generation Quality
+Measures how well the synthesized answer reads and aligns with reference text:
+- **BERTScore** — semantic similarity using contextual embeddings
+- **ROUGE-1 / ROUGE-L** — n-gram overlap with reference answers
+- **BLEU** — precision-oriented n-gram overlap
+
+### Layer 3: Google Baseline Comparison
+Compares the agent's answers against Google search results to gauge whether the agentic pipeline adds value over a standard search engine.
+
+### Layer 4: LLM-as-Judge
+An LLM evaluates each answer on five dimensions (relevance, completeness, accuracy, citation quality, clarity) on a 0–1 scale, providing qualitative feedback alongside numeric scores.
+
+### Layer 5: RAGAS
+Uses the RAGAS framework to evaluate RAG-specific qualities:
+- **Faithfulness** — is the answer grounded in the retrieved context?
+- **Answer Relevancy** — does the answer address the question?
+- **Context Precision / Recall** — are the retrieved passages relevant and sufficient?
+
+### Layer 6: Robustness & Stress Testing
+Tests pipeline stability under real-world noise:
+- **Paraphrase consistency** — do semantically equivalent queries produce consistent answers?
+- **Adversarial inputs** — resilience to misspellings, jargon, and malformed queries
+- **Query drift** — sensitivity to small wording changes
+
+### Self-Reflection Quality Scores
+The agent also scores its own answers during inference on:
+- Relevance, Completeness, Accuracy, Citation Quality, Clarity (each 0–1)
+- Answers below the quality threshold (default 0.7) trigger automatic re-retrieval and re-synthesis
 
 
 ## Acknowledgments
