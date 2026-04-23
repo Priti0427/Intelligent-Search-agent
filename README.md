@@ -276,4 +276,4 @@ The agent also scores its own answers during inference on:
 
 ---
 
-**Developed by:** Priti Sagar, Manjiri Prashant Khodke, Omkar Salunkhe
+
