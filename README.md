@@ -234,17 +234,17 @@ The project includes a six-layer evaluation framework that goes well beyond basi
 
 ### Layer 1: IR Retrieval Metrics
 Classical information retrieval measures computed per query and averaged across the test set:
-- **Precision / Recall / F1** — fraction of retrieved results that are relevant, and vice versa
+- **Precision / Recall / F1** : fraction of retrieved results that are relevant, and vice versa
 - **P@5, P@10** — precision within the top-k results
-- **nDCG@5, nDCG@10** — ranking quality via Normalized Discounted Cumulative Gain
-- **MAP** — Mean Average Precision across all queries
-- **MRR** — Mean Reciprocal Rank of the first relevant result
+- **nDCG@5, nDCG@10** : ranking quality via Normalized Discounted Cumulative Gain
+- **MAP** : Mean Average Precision across all queries
+- **MRR** : Mean Reciprocal Rank of the first relevant result
 
 ### Layer 2: Text Generation Quality
 Measures how well the synthesized answer reads and aligns with reference text:
-- **BERTScore** — semantic similarity using contextual embeddings
-- **ROUGE-1 / ROUGE-L** — n-gram overlap with reference answers
-- **BLEU** — precision-oriented n-gram overlap
+- **BERTScore** : semantic similarity using contextual embeddings
+- **ROUGE-1 / ROUGE-L** : n-gram overlap with reference answers
+- **BLEU** : precision-oriented n-gram overlap
 
 ### Layer 3: Google Baseline Comparison
 Compares the agent's answers against Google search results to gauge whether the agentic pipeline adds value over a standard search engine.
