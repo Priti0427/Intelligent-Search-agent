@@ -92,7 +92,7 @@ If quality score < 0.7, the agent iterates with specific feedback to improve.
 git clone https://github.com/Priti0427/Intelligent-Search-agent.git
 cd Intelligent-Search-agent
 
-# Create virtual environment (use Python 3.11)
+# Create virtual environment 
 python3.11 -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 
