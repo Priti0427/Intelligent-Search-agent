@@ -250,7 +250,7 @@ Measures how well the synthesized answer reads and aligns with reference text:
 Compares the agent's answers against Google search results to gauge whether the agentic pipeline adds value over a standard search engine.
 
 ### Layer 4: LLM-as-Judge
-An LLM evaluates each answer on five dimensions (relevance, completeness, accuracy, citation quality, clarity) on a 0–1 scale, providing qualitative feedback alongside numeric scores.
+An LLM evaluates each answer on five dimensions (relevance, completeness, accuracy, citation quality, clarity) on a 0–1 scale, providing qualitative feedback alongside the numeric scores.
 
 ### Layer 5: RAGAS (RAG Assessment System)
 Uses the RAGAS framework to evaluate RAG-specific qualities:
