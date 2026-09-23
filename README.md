@@ -268,6 +268,7 @@ Tests pipeline stability under real-world noise:
 The agent also scores its own answers during inference on:
 - Relevance, Completeness, Accuracy, Citation Quality, Clarity (each 0–1)
 - Answers below the quality threshold (default 0.7) trigger automatic re-retrieval and re-synthesis
+- Maximum iteration of up to 3 to avoid agent getting stuck in infinite loop here
 
 
 ## Acknowledgments
