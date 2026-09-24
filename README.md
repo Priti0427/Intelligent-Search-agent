@@ -2,7 +2,7 @@
 
 ---
 
-An intelligent multi-source search agent built with LangGraph and LangChain for Information Retrieval.
+An intelligent multi-source search AI agent built with LangGraph and LangChain for efficient Information Retrieval.
 
 ## Project Overview
 
