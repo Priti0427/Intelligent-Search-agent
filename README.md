@@ -52,7 +52,7 @@ User Query → Query Analyzer → Query Decomposer → Router
 ### Multi-Source Retrieval
 - **Web Search (Tavily)**: Real-time information from the internet
 - **Academic Papers (arXiv)**: Research papers and technical content
-- **Custom Documents (ChromaDB)**: Your own PDFs, docs, and notes
+- **Custom Documents (ChromaDB)**: Our own PDFs, docs, and notes
 
 ### Self-Reflection Loop
 The agent evaluates its own answers on 5 dimensions:
