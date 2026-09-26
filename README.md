@@ -15,7 +15,7 @@ This project implements a sophisticated search agent that:
 
 ## Problem Statement
 
-Traditional search engines return a list of links, leaving users to manually:
+Traditional search engines return a list of links, which users need to manually:
 - Read through multiple documents
 - Extract relevant information
 - Synthesize findings into coherent answers
