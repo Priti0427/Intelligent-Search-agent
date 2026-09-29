@@ -55,7 +55,7 @@ User Query → Query Analyzer → Query Decomposer → Router
 - **Custom Documents (ChromaDB)**: Our own PDFs, docs, and notes
 
 ### Self-Reflection Loop
-The agent evaluates its own answers on 5 dimensions:
+The agent evaluates its own answers on these 5 dimensions:
 - Relevance: Does it answer the question?
 - Completeness: Are all aspects covered?
 - Accuracy: Is it consistent with sources?
