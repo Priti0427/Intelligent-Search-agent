@@ -128,7 +128,7 @@ python -m uvicorn src.api.main:app --host 0.0.0.0 --port 8000
 ```
 agentic-search/
 ├── src/
-│   ├── agent/                # LangGraph agent definition
+│   ├── agent/                # LangGraph agents definition
 │   │   ├── graph.py          # Main workflow
 │   │   ├── state.py          # State schema
 │   │   └── nodes/            # Individual nodes
