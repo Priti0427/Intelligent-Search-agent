@@ -8,7 +8,7 @@ An intelligent multi-source search AI agent built with LangGraph and LangChain f
 
 This project implements a sophisticated search agent that:
 1. **Decomposes complex queries** into manageable sub-queries
-2. **Routes queries** to appropriate sources (web, vector DB, academic papers)
+2. **Routes queries** to appropriate sources(web, vector DB, academic papers)
 3. **Retrieves and ranks** results from multiple indexes in parallel
 4. **Synthesizes comprehensive answers** with proper citations
 5. **Self-reflects** to improve answer quality through iterative refinement
@@ -51,7 +51,7 @@ User Query → Query Analyzer → Query Decomposer → Router
 
 ### Multi-Source Retrieval
 - **Web Search (Tavily)**: Real-time information from the internet
-- **Academic Papers (arXiv)**: Research papers and technical content
+- **Academic Papers (arXiv)**: Research papers and Technical content
 - **Custom Documents (ChromaDB)**: Our own PDFs, docs, or notes
 
 ### Self-Reflection Loop
@@ -152,7 +152,7 @@ agentic-search/
 │   │   ├── generation_metrics.py  # BERTScore, BLEU, ROUGE
 │   │   ├── google_baseline.py     # Google baseline comparison
 │   │   ├── judge_agent.py    # LLM-as-Judge evaluation
-│   │   ├── ragas_evaluation.py    # RAGAS (Faithfulness, Context Precision/Recall)
+│   │   ├── ragas_evaluation.py    # RAGAS(Faithfulness, Context Precision/Recall)
 │   │   ├── robustness.py     # Robustness & stress testing
 │   │   └── test_cases.py     # Evaluation test cases
 │   ├── api/                  # FastAPI backend
@@ -267,7 +267,7 @@ Tests pipeline stability under real-world noise:
 ### Self-Reflection Quality Scores
 The agent also scores its own answers during inference on:
 - Relevance, Completeness, Accuracy, Citation Quality, Clarity (each 0–1)
-- Answers below the quality threshold (default 0.7) trigger automatic re-retrieval and re-synthesis
+- Answers below the quality threshold(default 0.7) trigger automatic re-retrieval and re-synthesis
 - Maximum iteration of up to 3 to avoid agent getting stuck in infinite loop here
 
 
