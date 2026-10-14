@@ -236,7 +236,7 @@ The project includes a six-layer evaluation framework that goes well beyond basi
 Classical information retrieval measures computed per query and averaged across the test set:
 - **Precision / Recall / F1** : fraction of retrieved results that are relevant, and vice versa
 - **P@5, P@10** — precision within the top-k results
-- **nDCG@5, nDCG@10** : ranking quality via Normalized Discounted Cumulative Gain
+- **nDCG@5, nDCG@10** : ranking quality via Normalized Discounted Cumulative Gain(NDGC)
 - **MAP** : Mean Average Precision across all queries
 - **MRR** : Mean Reciprocal Rank of the first relevant result
 
