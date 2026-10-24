@@ -150,7 +150,7 @@ agentic-search/
 │   │   ├── evaluator.py      # Orchestrates all evaluation layers
 │   │   ├── metrics.py        # IR metrics (Precision, Recall, nDCG, MAP, MRR)
 │   │   ├── generation_metrics.py  # BERTScore, BLEU, ROUGE
-│   │   ├── google_baseline.py     # Google baseline comparison
+│   │   ├── google_baseline.py     # Google answers baseline comparison 
 │   │   ├── judge_agent.py    # LLM-as-Judge evaluation
 │   │   ├── ragas_evaluation.py    # RAGAS(Faithfulness, Context Precision/Recall)
 │   │   ├── robustness.py     # Robustness & stress testing
