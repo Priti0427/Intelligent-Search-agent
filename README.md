@@ -44,7 +44,7 @@ User Query → Query Analyzer → Query Decomposer → Router
                                     │  Quality ≥ 0.7? ──► Done      │
                                     └────────────────────────────────┘
                                                     ↓
-                                    Final Answer with Citations
+                                    Final Answer with Citations and Confidence
 ```
 
 ## Key Features
